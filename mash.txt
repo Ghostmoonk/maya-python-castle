@@ -1,5 +1,7 @@
 https://help.autodesk.com/cloudhelp/2018/ENU/Maya-Tech-Docs/MASH/MASH.html
 
+https://www.youtube.com/watch?v=ij5ke9ftyH8&ab_channel=IanWaters
+
 
 Video sur la creation de MASH sur un groupe et ensuite modification avec python:
 https://www.youtube.com/watch?v=MLs-p_L-xEM&ab_channel=Uhr
