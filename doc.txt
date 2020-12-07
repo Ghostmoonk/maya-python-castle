@@ -8,3 +8,10 @@ https://www.youtube.com/watch?v=MLs-p_L-xEM&ab_channel=Uhr
 
 site du mec de la video avec son code:
 http://ianwaters.co.uk/wp/mash/mash-python-meshes-part-1-normals/
+
+
+Interfaces:
+https://download.autodesk.com/us/maya/2011help/CommandsPython/tabLayout.html
+
+tuto interface super pratique:
+https://zestedesavoir.com/tutoriels/947/utiliser-python-dans-autodesk-maya/decouverte-des-commandes-1/faire-une-simple-interface/
