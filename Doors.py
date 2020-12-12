@@ -20,6 +20,7 @@ class InnerDoor(Door):
         cmds.group(('inner_door','inner_door_locator_left','inner_door_locator_right'),n='inner_door_group')
         cmds.move(position.x, position.y + self.doorSize.y/2, position.z, "inner_door_group")
         cmds.rotate(rotation.x, rotation.y, rotation.z,"inner_door_group")
+        return
 
 class OuterDoor(Door):
     #Valeur indicative à modifier en fonction des assets
@@ -33,3 +34,4 @@ class OuterDoor(Door):
         cmds.group(('outer_door','outer_door_locator_left','outer_door_locator_right'),n='outer_door_group')
         cmds.move(position.x, position.y + self.doorSize.y/2, position.z, "outer_door_group")
         cmds.rotate(rotation.x, rotation.y, rotation.z,"outer_door_group")
+        return
