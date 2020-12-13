@@ -1,0 +1,17 @@
+https://help.autodesk.com/cloudhelp/2018/ENU/Maya-Tech-Docs/MASH/MASH.html
+
+https://www.youtube.com/watch?v=ij5ke9ftyH8&ab_channel=IanWaters
+
+
+Video sur la creation de MASH sur un groupe et ensuite modification avec python:
+https://www.youtube.com/watch?v=MLs-p_L-xEM&ab_channel=Uhr
+
+site du mec de la video avec son code:
+http://ianwaters.co.uk/wp/mash/mash-python-meshes-part-1-normals/
+
+
+Interfaces:
+https://download.autodesk.com/us/maya/2011help/CommandsPython/tabLayout.html
+
+tuto interface super pratique:
+https://zestedesavoir.com/tutoriels/947/utiliser-python-dans-autodesk-maya/decouverte-des-commandes-1/faire-une-simple-interface/
