@@ -25,5 +25,8 @@ class Vector3:
 
     @classmethod
     def getAngleBetweenVector(cls, vecA, vecB):
-        return math.degrees(math.acos(Vector3.getDotProduct(vecA,vecB)/(vecA.magnitude *vecB.magnitude)))
+        if(vecA.magnitude *vecB.magnitude != 0):
+            return math.degrees(math.acos(Vector3.getDotProduct(vecA,vecB)/(vecA.magnitude *vecB.magnitude)))
+        else:
+            return 0
 

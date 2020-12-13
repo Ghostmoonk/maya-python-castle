@@ -1,6 +1,6 @@
 import math as math
 import maya.cmds as cmds
-cmds.file(f=True, new=True)
+#cmds.file(f=True, new=True)
 from maya_python_castle.Utils.Utils import Vector3
 import maya_python_castle.Utils as Utils
 import maya.app.general.positionAlongCurve as mayaGeneral
@@ -15,18 +15,34 @@ reload(Towers)
 reload(Doors)
 reload(Ramparts)
 
+if( not cmds.objExists("Ramparts")):
+    rampartsLayer = cmds.createDisplayLayer(n="Ramparts", mc=True,num=1)
+else:
+    print("layer exist deja")
+
 class Castle:
     
     def __init__(self, interiorRampart, exteriorRampart,groundRampart):
+        
+        groupNames = []
         self.interiorRampart = interiorRampart
         self.exteriorRampart = exteriorRampart
         self.groundRampart = groundRampart
         self.interiorRampart.instantiateRampartCurveBased()
+        groupNames.append(self.interiorRampart.groupName)
         self.exteriorRampart.instantiateRampartCurveBased()
+        groupNames.append(self.exteriorRampart.groupName)
         self.groundRampart.instantiateRampartCurveBased()
-        
-interiorRampart = Ramparts.InteriorRampart(8, 60.0, 0.5, 0.5, 60, Vector3(0,10,0),4)
-exteriorRampart = Ramparts.ExteriorRampart(8, 60, 0.5, 0.5, 100, Vector3(0,0,0))
-groundRampart = Ramparts.GroundRampart(12,0,0.5, 0.5,70, Vector3(0,10,0),10)
+        groupNames.append(self.groundRampart.groupName)
+
+        self.name = cmds.group(groupNames,n="Castle")
+
+if(cmds.objExists("Castle")):
+    cmds.select("Castle")
+    cmds.delete()
+
+interiorRampart = Ramparts.InteriorRampart(8, 60.0, 0.5, 0.5, 80, Vector3(0,10,0),9)
+exteriorRampart = Ramparts.ExteriorRampart(8, 60.0, 0.5, 0.5, 140, Vector3(0,0,0))
+groundRampart = Ramparts.GroundRampart(12,0.0,0.5, 0.5,90, Vector3(0,10,0),10)
 castle = Castle(interiorRampart,exteriorRampart,groundRampart)
-        
+cmds.editDisplayLayerMembers(rampartsLayer, 'Castle')

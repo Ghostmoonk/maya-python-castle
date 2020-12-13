@@ -35,9 +35,10 @@ class Rampart(object):
         self.apertureAngle = apertureAngle
         self.walls = []
         self.wallsSegmentIndex = 0
+        self.wallsGroupName = "rampart_walls"
         self.curveName = ""
         self.curve = ""
-
+        self.groupName = ""
     def getTrigoSegmentLength(self):
         return 2 * self.radius * math.sin(math.pi / self.resolution)
 
@@ -56,8 +57,8 @@ class Rampart(object):
         self.curveName = self.curve[0]
         cmds.rotate(90,-self.apertureAngle/2,0, self.curveName)
         #Step 2 : Create locators
-        cmds.spaceLocator(p=cmds.pointPosition( self.curveName+'.cv[0]'))
-        cmds.spaceLocator(p=cmds.pointPosition( self.curveName+'.cv['+str(self.resolution)+']'))
+        # cmds.spaceLocator(p=cmds.pointPosition( self.curveName+'.cv[0]'))
+        # cmds.spaceLocator(p=cmds.pointPosition( self.curveName+'.cv['+str(self.resolution)+']'))
         #Step 3 : Create walls
         self.createSegmentsWalls()
 
@@ -89,9 +90,8 @@ class Rampart(object):
             wallsSegmentNames = []
             cmds.rotate(0, float((360.0-self.apertureAngle)/self.resolution*i), 0, wallGroupName +str(self.wallsSegmentIndex), p=(self.center.x,self.center.y,self.center.z))
             self.IncrementWallsSegmentIndex()
-        cmds.group(wallSegmentGroupNames,n=wallGroupName+"_group")
+        cmds.group(wallSegmentGroupNames,n=wallGroupName)
         return wallSegmentGroupNames
-        
 
     def createWall(self,spawnPos,rotation):
         return Walls.InnerWall(spawnPos,rotation)
@@ -124,9 +124,12 @@ class Rampart(object):
             self.walls.append(wall)
             wallsSegmentNames.append(wall.name)
 
-        cmds.group(wallsSegmentNames, n= wallGroupName + str(self.wallsSegmentIndex))
-        cmds.xform(wallGroupName + str(self.wallsSegmentIndex),piv=(0,0,0))
+        cmds.group(wallsSegmentNames, n= wallGroupName)
+        cmds.xform(wallGroupName,piv=(0,0,0))
         self.IncrementWallsSegmentIndex()
+
+    def groupRampart(self,objectsGroup, newGroupName):
+        self.groupName = cmds.group(objectsGroup,n= newGroupName)
 
 class InteriorRampart(Rampart):
 
@@ -138,6 +141,9 @@ class InteriorRampart(Rampart):
         self.wallsPerSegment = int(
             math.ceil(self.getTrigoSegmentLength() / Walls.InnerWall.wallSize.x))
         self.door = ''
+        self.towersGroupName = "interior_towers"
+        self.wallsGroupName = "inner_walls"
+        self.groupName = "interior_rampart"
         return
 
     def createWall(self,spawnPos,rotation):
@@ -147,18 +153,18 @@ class InteriorRampart(Rampart):
         return Walls.InnerWall.wallSize
 
     def createSegmentsWalls(self):
-        super(InteriorRampart,self).createSegmentsWalls('inner_walls_')
+        super(InteriorRampart,self).createSegmentsWalls(self.wallsGroupName)
 
-    def createTowers(self,towersGroupName):
+    def createTowers(self):
         #Array of tower's name to select them and positionAlongCurve
-        towersGroup = cmds.group(em=True, n=towersGroupName)
+        towersGroup = cmds.group(em=True, n=self.towersGroupName)
         towerNames = []
         for i in range(0,self.towerAmount):
             tower = Towers.Tower(Vector3(0,0,0))
             self.towers.append(tower)
             towerNames.append(tower.name)
             Towers.Tower.IncrementTowerIndex()
-            cmds.parent(tower.name, towersGroupName)
+            cmds.parent(tower.name, self.towersGroupName)
         #Select towers then curve to positionAlongCurve
         cmds.select(towerNames)
         cmds.select(self.curveName,add=True)
@@ -167,7 +173,7 @@ class InteriorRampart(Rampart):
     def instantiateRampartCurveBased(self):
         super(InteriorRampart,self).instantiateRampartCurveBased('InteriorRampart_curve')
         #Step 4 : Create Towers
-        self.createTowers("interior_towers")
+        self.createTowers()
         #Step 5 : Create Door
         doorPosition = Vector3(self.center.x,self.center.y,self.radius)
         self.door = Doors.InnerDoor(doorPosition,Vector3(0,0,0))
@@ -184,7 +190,8 @@ class InteriorRampart(Rampart):
         rightExtremityCurve = Vector3(cmds.pointPosition(self.curveName + '.cv['+str(self.resolution)+']')[0],cmds.pointPosition(self.curveName + '.cv['+str(self.resolution)+']')[1],cmds.pointPosition(self.curveName + '.cv['+str(self.resolution)+']')[2])
         self.createDoorWalls(rightSideDoorPosition,rightExtremityCurve,"right_in_side_door_walls","right_in_side_door_curve")
 
-        #Step 7 : Create ground        
+        #Step 7 : Group all
+        self.groupRampart([self.curveName,self.towersGroupName,self.wallsGroupName,self.door.groupName,"left_in_side_door_walls","right_in_side_door_walls"],self.groupName)    
 
 class ExteriorRampart(Rampart):
 
@@ -193,6 +200,8 @@ class ExteriorRampart(Rampart):
         self.intersectionPoints = []
         self.wallsPerSegment = int(math.ceil(self.getTrigoSegmentLength() / Walls.OuterWall.wallSize.x))
         self.door = ''
+        self.wallsGroupName = "outer_walls"
+        self.groupName = "exterior_rampart"
         return
 
     def getWallSize(self):
@@ -202,7 +211,7 @@ class ExteriorRampart(Rampart):
         return Walls.OuterWall(spawnPos,rotation)
 
     def createSegmentsWalls(self):
-        super(ExteriorRampart,self).createSegmentsWalls('outer_walls_')
+        super(ExteriorRampart,self).createSegmentsWalls(self.wallsGroupName)
 
     def instantiateRampartCurveBased(self):
         super(ExteriorRampart,self).instantiateRampartCurveBased('ExteriorRampart_curve')
@@ -221,24 +230,33 @@ class ExteriorRampart(Rampart):
         rightExtremityCurve = Vector3(cmds.pointPosition(self.curveName + '.cv['+str(self.resolution)+']')[0],cmds.pointPosition(self.curveName + '.cv['+str(self.resolution)+']')[1],cmds.pointPosition(self.curveName + '.cv['+str(self.resolution)+']')[2])
         self.createDoorWalls(rightSideDoorPosition,rightExtremityCurve,"right_out_side_door_walls","right_out_side_door_curve")
 
+        #Step 6 : Group all
+        self.groupRampart([self.curveName,self.wallsGroupName,self.door.groupName,"left_out_side_door_walls","right_out_side_door_walls"], self.groupName)    
+
 class GroundRampart(Rampart):
 
     def __init__(self, resolution, apertureAngle, wallHeight, wallDepth, radius, center, groundHeight):
         super(GroundRampart, self).__init__(resolution, apertureAngle, wallHeight, wallDepth, radius, center)
         self.groundHeight = groundHeight
-        self.groundObject = cmds.polyCylinder(sx=resolution,sz=1, r=radius, h=groundHeight, n="inner_ground")
-        cmds.xform(self.groundObject,piv=(center.x,groundHeight/2.0,center.z),ws=True)
-        cmds.move(center.x, center.y-groundHeight/2.0, center.z, self.groundObject)
+        self.wallsGroupName = "inner_ground_wall"
+        self.groupName = "ground_rampart"
         return
     
     def createSegmentsWalls(self):
-        super(GroundRampart,self).createSegmentsWalls('ground_walls_')
+        super(GroundRampart,self).createSegmentsWalls(self.wallsGroupName)
     
     def instantiateRampartCurveBased(self):
+        self.groundObject = cmds.polyCylinder(sx=self.resolution,sz=1, r=self.radius, h=self.groundHeight, n="inner_ground")
+        cmds.xform(self.groundObject,piv=(self.center.x,self.groundHeight/2.0,self.center.z),ws=True)
+        cmds.move(self.center.x, self.center.y-self.groundHeight/2.0, self.center.z, self.groundObject)
+        #cmds.move(self.center.x, self.center.y, self.center.z, self.groundObject)
         super(GroundRampart,self).instantiateRampartCurveBased('GroundRampart_curve')
+        #Group all
+        self.groupRampart([self.curveName, self.wallsGroupName, "inner_ground"], self.groupName)    
 
     def createWall(self,spawnPos,rotation):
-        return Walls.GroundWall(Vector3(spawnPos.x,spawnPos.y - Walls.GroundWall.wallSize.y,spawnPos.z),Vector3(rotation.x - 10.0,rotation.y,rotation.z))
+        #return Walls.GroundWall(Vector3(spawnPos.x,spawnPos.y - Walls.GroundWall.wallSize.y,spawnPos.z),rotation)
+        return Walls.GroundWall(Vector3(spawnPos.x,spawnPos.y,spawnPos.z),rotation)
     
     def getWallSize(self):
         return Walls.GroundWall.wallSize
