@@ -2,10 +2,10 @@ import maya.cmds as cmds
 import functools
 
 #cmds.file(f=True, new=True)
-
+print('interface')
 def close_callback(window, *args):
   print "Close!", window
-  mc.deleteUI(window, window=True)
+  cmds.deleteUI(window, window=True)
 
 class Scene:
     def __init__(self):
@@ -13,10 +13,10 @@ class Scene:
         self.windows = cmds.showWindow(self.interface)
 
         
-        mc.button('pushButtonD', edit=True, command=functools.partial(close_callback, self.interface))
+        cmds.button('pushButtonD', edit=True, command=functools.partial(close_callback, self.interface))
 
         #cmds.columnLayout()
-        self.slider1 = cmds.intSlider('slider1')
+        #self.slider1 = cmds.intSliderGrp('slider1')
         #self.slider1 = self.createSlider("Height Slum", 0, 0.4, 0.3)
         #self.afficherWindow()
         self.slum= Slum()
@@ -72,8 +72,10 @@ class Slum:
         print('init slum')
 
     def height(self):
+        print cmds.intSlider('slider1', q=True, v=True)
         print('height')
-        cmds.setAttr("MASH3_Offset.Envelope", scene.getSliderValue(scene.slider1))
+        cmds.setAttr("MASH3_Offset.Envelope", cmds.intSlider('slider1', q=True, v=True)/10.)
+        #cmds.setAttr("MASH3_Offset.Envelope", scene.getSliderValue(scene.slider1))
 
 
 
