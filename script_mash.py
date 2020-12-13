@@ -1,6 +1,8 @@
 import MASH.api as mapi
 import maya.cmds as cmds
 
+"""MASH 3 = ville """
+
 #cmds.select("MASH3")
 
 
@@ -27,3 +29,9 @@ cmds.setAttr("ramp4.colorEntryList[1].position", 0.16)
 
 
 # distirbute plusieurs maisons
+
+
+
+"""MASH4 = TOURS """
+
+
