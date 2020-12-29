@@ -17,8 +17,6 @@ reload(Ramparts)
 
 if( not cmds.objExists("Ramparts")):
     rampartsLayer = cmds.createDisplayLayer(n="Ramparts", mc=True,num=1)
-else:
-    print("layer exist deja")
 
 class Castle:
     
@@ -36,13 +34,13 @@ class Castle:
         groupNames.append(self.groundRampart.groupName)
 
         self.name = cmds.group(groupNames,n="Castle")
+        cmds.editDisplayLayerMembers(rampartsLayer, 'Castle')
 
-if(cmds.objExists("Castle")):
-    cmds.select("Castle")
-    cmds.delete()
+# if(cmds.objExists("Castle")):
+#     cmds.select("Castle")
+#     cmds.delete()
 
-interiorRampart = Ramparts.InteriorRampart(8, 60.0, 0.5, 0.5, 80, Vector3(0,10,0),9)
-exteriorRampart = Ramparts.ExteriorRampart(8, 60.0, 0.5, 0.5, 140, Vector3(0,0,0))
-groundRampart = Ramparts.GroundRampart(12,0.0,0.5, 0.5,90, Vector3(0,10,0),10)
-castle = Castle(interiorRampart,exteriorRampart,groundRampart)
-cmds.editDisplayLayerMembers(rampartsLayer, 'Castle')
+# interiorRampart = Ramparts.InteriorRampart(8, 60.0, 0.5, 0.5, 80, Vector3(0,10,0),9)
+# exteriorRampart = Ramparts.ExteriorRampart(8, 60.0, 0.5, 0.5, 140, Vector3(0,0,0))
+# groundRampart = Ramparts.GroundRampart(12,0.0,0.5, 0.5,90, Vector3(0,10,0),10)
+# castle = Castle(interiorRampart,exteriorRampart,groundRampart)

@@ -21,6 +21,7 @@ class InnerWall(Wall):
             template= cmds.duplicate("ASSET_Muraille_int_haut:Murailles_int_haut",n="inner_wall_template")
         else:
             template = cmds.polyCube(w=wallSize.x, h=wallSize.y, d=wallSize.z, n="inner_wall_template")
+            cmds.xform("inner_wall_template",piv=(0,-wallSize.y/2,0))
         
         cmds.hide("inner_wall_template")
     else:
@@ -43,6 +44,7 @@ class GroundWall(Wall):
             template = cmds.duplicate("ASSET_Muraille_int_bas:Muraille_int_bas", n="ground_wall_template")
         else:
             template = cmds.polyCube(w=wallSize.x, h=wallSize.y, d=wallSize.z, n="ground_wall_template")
+            cmds.xform("ground_wall_template",piv=(0,-wallSize.y/2,0))
         
         cmds.hide("ground_wall_template")
     else:
@@ -65,7 +67,7 @@ class OuterWall(Wall):
             template = cmds.duplicate("ASSET_Muraille_ext_mur:Muraille_ext", n="outer_wall_template")
         else:
             template = cmds.polyCube(w=wallSize.x, h=wallSize.y, d=wallSize.z, n="outer_wall_template")
-        
+            cmds.xform("outer_wall_template",piv=(0,-wallSize.y/2,0))
         cmds.hide("outer_wall_template")
     else:
         template = cmds.ls("outer_wall_template")

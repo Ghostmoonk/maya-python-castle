@@ -12,7 +12,7 @@ class Tower:
             template = cmds.duplicate("ASSET_Muraille_int_tour:Muraille_int_tour",n="tower_template")
         else:
             template = cmds.polyCylinder(r=radius, h=height, n="tower_template")
-    
+            cmds.xform("tower_template",piv=(0,-height/2,0))
         cmds.hide("tower_template")
     else:
         template = cmds.ls("tower_template")

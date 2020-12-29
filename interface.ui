@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>689</width>
+    <width>688</width>
     <height>460</height>
    </rect>
   </property>
@@ -29,7 +29,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -58,33 +58,12 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>14</y>
+          <y>0</y>
           <width>441</width>
           <height>321</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
-         <item row="1" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_7">
-           <item>
-            <widget class="QLabel" name="label_11">
-             <property name="text">
-              <string>Hauteur</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QSlider" name="horizontalSlider_2">
-             <property name="maximum">
-              <number>16</number>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
          <item row="4" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_10">
            <item>
@@ -211,6 +190,197 @@
            </property>
            <property name="text">
             <string>Rampart Intérieur </string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>Hauteur</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="horizontalSlider_2">
+             <property name="maximum">
+              <number>16</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Rampart Exterieur</string>
+       </attribute>
+       <widget class="QWidget" name="gridLayoutWidget_5">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>441</width>
+          <height>321</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="1" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_21">
+           <item>
+            <widget class="QLabel" name="label_39">
+             <property name="text">
+              <string>Hauteur</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="horizontalSlider_14">
+             <property name="maximum">
+              <number>16</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="4" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_22">
+           <item>
+            <widget class="QLabel" name="label_40">
+             <property name="text">
+              <string>Ouverture</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="horizontalSlider_17">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="6" column="0">
+          <layout class="QGridLayout" name="gridLayout_8">
+           <item row="1" column="1">
+            <widget class="QSlider" name="horizontalSlider_18">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_41">
+             <property name="text">
+              <string>X</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_42">
+             <property name="text">
+              <string>Decalage de la porte</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QSlider" name="horizontalSlider_19">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_43">
+             <property name="text">
+              <string>Z</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="2" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_23">
+           <item>
+            <widget class="QLabel" name="label_44">
+             <property name="text">
+              <string>Résolution</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="horizontalSlider_20">
+             <property name="maximum">
+              <number>16</number>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="5" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_24">
+           <item>
+            <widget class="QLabel" name="label_45">
+             <property name="text">
+              <string>Nombre de tours</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="horizontalSlider_21">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="3" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_25">
+           <item>
+            <widget class="QLabel" name="label_46">
+             <property name="text">
+              <string>Rayon</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QSlider" name="horizontalSlider_22">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="0">
+          <widget class="QLabel" name="label_47">
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+             <underline>true</underline>
+            </font>
+           </property>
+           <property name="text">
+            <string>Rampart Exterieur </string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -450,6 +620,116 @@
        <attribute name="title">
         <string>Tours</string>
        </attribute>
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>631</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_26">
+         <item>
+          <widget class="QLabel" name="label_48">
+           <property name="text">
+            <string>Hauteur</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="horizontalSlider_23">
+           <property name="maximum">
+            <number>16</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="layoutWidget_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>631</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_27">
+         <item>
+          <widget class="QLabel" name="label_49">
+           <property name="text">
+            <string>Rayon</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="horizontalSlider_24">
+           <property name="maximum">
+            <number>16</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="label_50">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Modèle</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton">
+        <property name="geometry">
+         <rect>
+          <x>90</x>
+          <y>110</y>
+          <width>75</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>110</y>
+          <width>75</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_3">
+        <property name="geometry">
+         <rect>
+          <x>290</x>
+          <y>110</y>
+          <width>75</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>

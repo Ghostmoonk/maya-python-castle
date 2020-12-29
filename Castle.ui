@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>285</height>
+    <width>572</width>
+    <height>425</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>501</width>
+      <width>581</width>
       <height>571</height>
      </rect>
     </property>
@@ -38,8 +38,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>501</width>
-        <height>241</height>
+        <width>581</width>
+        <height>281</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -140,7 +140,7 @@
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider">
+       <widget class="QSlider" name="ri_hauteur">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -149,14 +149,20 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="minimum">
+         <number>5</number>
+        </property>
         <property name="maximum">
          <number>20</number>
+        </property>
+        <property name="sliderPosition">
+         <number>10</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_2">
+       <widget class="QSlider" name="ri_resolution">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -165,14 +171,20 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="minimum">
+         <number>3</number>
+        </property>
         <property name="maximum">
          <number>16</number>
+        </property>
+        <property name="value">
+         <number>6</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_3">
+       <widget class="QSlider" name="ri_rayon">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -181,11 +193,20 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="minimum">
+         <number>50</number>
+        </property>
+        <property name="maximum">
+         <number>140</number>
+        </property>
+        <property name="value">
+         <number>100</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_4">
+       <widget class="QSlider" name="ri_ouverture">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -194,11 +215,17 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="minimum">
+         <number>30</number>
+        </property>
+        <property name="maximum">
+         <number>120</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_5">
+       <widget class="QSlider" name="ri_tours">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -207,11 +234,17 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="value">
+         <number>6</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_6">
+       <widget class="QSlider" name="ri_decalageX">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -220,18 +253,30 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="minimum">
+         <number>-20</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_15">
+       <widget class="QSlider" name="ri_decalageZ">
         <property name="geometry">
          <rect>
-          <x>320</x>
+          <x>370</x>
           <y>170</y>
           <width>160</width>
           <height>22</height>
          </rect>
+        </property>
+        <property name="minimum">
+         <number>-20</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -253,7 +298,7 @@
        <widget class="QLabel" name="label_29">
         <property name="geometry">
          <rect>
-          <x>400</x>
+          <x>460</x>
           <y>160</y>
           <width>16</width>
           <height>16</height>
@@ -261,6 +306,97 @@
         </property>
         <property name="text">
          <string>Z</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_46">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>20</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_47">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>50</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;6&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_48">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>80</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;100&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_49">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>110</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_50">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>140</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;6&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_51">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>170</y>
+          <width>21</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_52">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>170</y>
+          <width>21</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
       </widget>
@@ -346,7 +482,7 @@
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_7">
+       <widget class="QSlider" name="re_hauteur">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -355,11 +491,17 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="minimum">
+         <number>10</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_8">
+       <widget class="QSlider" name="re_resolution">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -368,11 +510,17 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="minimum">
+         <number>3</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_9">
+       <widget class="QSlider" name="re_rayon">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -381,11 +529,17 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="minimum">
+         <number>10</number>
+        </property>
+        <property name="maximum">
+         <number>200</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_10">
+       <widget class="QSlider" name="re_ouverture">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -398,7 +552,7 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_11">
+       <widget class="QSlider" name="re_decalageX">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -406,6 +560,171 @@
           <width>160</width>
           <height>22</height>
          </rect>
+        </property>
+        <property name="minimum">
+         <number>-20</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QSlider" name="re_decalageZ">
+        <property name="geometry">
+         <rect>
+          <x>320</x>
+          <y>140</y>
+          <width>160</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>-20</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_36">
+        <property name="geometry">
+         <rect>
+          <x>230</x>
+          <y>130</y>
+          <width>16</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>X</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_37">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>130</y>
+          <width>16</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Z</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Ground</string>
+       </attribute>
+       <widget class="QSlider" name="ground_hauteur">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>20</y>
+          <width>160</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>10</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_38">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>20</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Hauteur</string>
+        </property>
+       </widget>
+       <widget class="Line" name="line_8">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>10</y>
+          <width>20</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_39">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>50</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Resolution</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_40">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>80</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rayon</string>
+        </property>
+       </widget>
+       <widget class="QSlider" name="ground_resolution">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>50</y>
+          <width>160</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>4</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QSlider" name="ground_rayon">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>80</y>
+          <width>160</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>60</number>
+        </property>
+        <property name="maximum">
+         <number>200</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -480,6 +799,12 @@
         <property name="text">
          <string/>
         </property>
+        <property name="iconSize">
+         <size>
+          <width>80</width>
+          <height>80</height>
+         </size>
+        </property>
        </widget>
        <widget class="QPushButton" name="pushButton_2">
         <property name="geometry">
@@ -503,6 +828,9 @@
           <height>61</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -520,7 +848,7 @@
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_12">
+       <widget class="QSlider" name="tour_hauteur">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -529,11 +857,14 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="value">
+         <number>20</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_13">
+       <widget class="QSlider" name="tour_rayon">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -546,7 +877,7 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_14">
+       <widget class="QSlider" name="tour_fenetres">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -557,6 +888,45 @@
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_43">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>20</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Hauteur</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_44">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>50</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rayon</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_45">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>80</y>
+          <width>101</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Nombre de fenêtres</string>
         </property>
        </widget>
       </widget>
@@ -629,7 +999,7 @@
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_16">
+       <widget class="QSlider" name="bp_hauteur_min">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -642,7 +1012,7 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_17">
+       <widget class="QSlider" name="bp_hauteur_max">
         <property name="geometry">
          <rect>
           <x>330</x>
@@ -681,7 +1051,7 @@
          <string>max</string>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_18">
+       <widget class="QSlider" name="bp_radius_medium">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -694,7 +1064,7 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_19">
+       <widget class="QSlider" name="bp_amount">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -770,14 +1140,14 @@
           <x>130</x>
           <y>10</y>
           <width>20</width>
-          <height>181</height>
+          <height>241</height>
          </rect>
         </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_20">
+       <widget class="QSlider" name="ville_hauteur">
         <property name="geometry">
          <rect>
           <x>160</x>
@@ -786,11 +1156,17 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="maximum">
+         <number>60</number>
+        </property>
+        <property name="singleStep">
+         <number>0</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_21">
+       <widget class="QSlider" name="ville_repartition_random">
         <property name="geometry">
          <rect>
           <x>160</x>
@@ -799,11 +1175,14 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_22">
+       <widget class="QSlider" name="ville_position_random">
         <property name="geometry">
          <rect>
           <x>160</x>
@@ -816,7 +1195,7 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_23">
+       <widget class="QSlider" name="ville_seed">
         <property name="geometry">
          <rect>
           <x>160</x>
@@ -829,7 +1208,7 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_25">
+       <widget class="QSlider" name="ville_amount">
         <property name="geometry">
          <rect>
           <x>160</x>
@@ -868,7 +1247,7 @@
          <string>Nombre - aléatoire</string>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_26">
+       <widget class="QSlider" name="ville_amount_min">
         <property name="geometry">
          <rect>
           <x>160</x>
@@ -881,7 +1260,7 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_27">
+       <widget class="QSlider" name="ville_amount_max">
         <property name="geometry">
          <rect>
           <x>330</x>
@@ -918,6 +1297,67 @@
         </property>
         <property name="text">
          <string>max</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_41">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>200</y>
+          <width>131</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Rotation - aléatoire</string>
+        </property>
+       </widget>
+       <widget class="QSlider" name="ville_rotationY">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>200</y>
+          <width>160</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_42">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>230</y>
+          <width>131</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Diametre</string>
+        </property>
+       </widget>
+       <widget class="QSlider" name="ville_diametre">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>230</y>
+          <width>160</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>80</number>
+        </property>
+        <property name="maximum">
+         <number>260</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
         </property>
        </widget>
       </widget>
@@ -1003,7 +1443,7 @@
          <string/>
         </property>
        </widget>
-       <widget class="QSlider" name="horizontalSlider_24">
+       <widget class="QSlider" name="maison_scale">
         <property name="geometry">
          <rect>
           <x>150</x>
@@ -1017,6 +1457,32 @@
         </property>
        </widget>
       </widget>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>300</y>
+        <width>561</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="generate_castle_button">
+         <property name="text">
+          <string>Generate castle</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="generate_slum_button">
+         <property name="text">
+          <string>Generate slum</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="materials_tab">
@@ -1095,13 +1561,128 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>500</width>
+     <width>572</width>
      <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
- <connections/>
+ <resources>
+  <include location="Icons/test.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>ri_hauteur</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_46</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>296</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>360</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ri_resolution</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_47</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>280</x>
+     <y>125</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>348</x>
+     <y>124</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ri_rayon</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_48</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>348</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ri_ouverture</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_49</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>303</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ri_tours</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_50</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>272</x>
+     <y>211</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>211</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ri_decalageX</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_51</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>296</x>
+     <y>243</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>346</x>
+     <y>244</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ri_decalageZ</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_52</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>517</x>
+     <y>245</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>547</x>
+     <y>245</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

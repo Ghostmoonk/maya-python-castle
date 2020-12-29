@@ -1,48 +1,94 @@
 import maya.cmds as cmds
 import functools
-
+from maya_python_castle.Utils.Utils import Vector3
+import maya_python_castle.Utils as Utils
+import maya_python_castle.Walls as Walls
+import maya_python_castle.Ramparts as Ramparts
+import maya_python_castle.Castle as Castle
 #cmds.file(f=True, new=True)
-print('interface')
+
+reload(Utils.Utils)
+reload(Walls)
+reload(Ramparts)
+reload(Castle)
 def close_callback(window, *args):
   print "Close!", window
   cmds.deleteUI(window, window=True)
 
+#print(path.replace("\\","/))
 class Scene:
     def __init__(self):
-        self.interface = cmds.loadUI(uiFile=r'D:\Users\Justine\ATI\python\maya-python-castle\interface.ui')
+        self.interface = cmds.loadUI(f=cmds.internalVar(usd=True) + 'maya_python_castle/Castle.ui')
         self.windows = cmds.showWindow(self.interface)
-        cmds.button('buttonClose', edit=True, command=functools.partial(close_callback, self.interface))
+        #↓cmds.button('buttonClose', edit=True, command=functools.partial(close_callback, self.interface))
         self.slum= Slum()
+        self.castle = ''
+        print(cmds.button('generate_slum_button', query=True, exists=True))
+        cmds.button('generate_slum_button',edit=True, c='scene.generateSlum()')
+        cmds.button('generate_castle_button',edit=True, c='scene.generateCastle()')
 
-        print(cmds.button('buttonSlum', query=True, exists=True))
-        cmds.button('buttonSlum',edit=True, c='scene.generateSlum()')
+        self. towerAmountSlider = cmds.intSlider(
+            'ri_tours',e=True,dc="scene.castle.interiorRampart.createTowers(cmds.intSlider(scene.towerAmountSlider,q=True,v=True))")
 
+        #
     def generateSlum(self):
         scene.slum.density()
         scene.slum.height()
         scene.slum.randomRotation()
         scene.slum.diametre()
+    
+    def generateCastle(self):
+        print("Generate")
+        if(cmds.objExists("Castle")):
+            cmds.select("Castle")
+            cmds.delete()
+
+        interiorRampart = Ramparts.InteriorRampart(
+            cmds.intSlider('ri_resolution', q=True, v=True),
+            cmds.intSlider('ri_ouverture', q=True, v=True),
+            0.5, 
+            0.5,
+            cmds.intSlider('ri_rayon', q=True, v=True),
+            Vector3(0,10,0),
+            cmds.intSlider('ri_tours', q=True, v=True))
+        exteriorRampart = Ramparts.ExteriorRampart(
+            cmds.intSlider('re_hauteur', q=True, v=True),
+            cmds.intSlider('re_ouverture', q=True, v=True),
+            0.5,
+            0.5,
+            cmds.intSlider('re_rayon', q=True, v=True),
+            Vector3(0,0,0))
+            
+        groundRampart = Ramparts.GroundRampart(
+            cmds.intSlider('ground_resolution', q=True, v=True),
+            0.0,
+            0.5,
+            0.5,
+            cmds.intSlider('ground_rayon', q=True, v=True),
+            Vector3(0,10,0),
+            cmds.intSlider('ground_hauteur', q=True, v=True))
+
+        self.castle = Castle.Castle(interiorRampart,exteriorRampart,groundRampart)
 
 
 class Slum:
     def __init__(self):
-        print('init slum')
+        return
 
     def height(self):
-        print cmds.intSlider('sliderSlumH', q=True, v=True)
-        print('height')
-        cmds.setAttr("MASH3_Offset.Envelope", cmds.intSlider('sliderSlumH', q=True, v=True)/100.)
+        print cmds.intSlider('ville_hauteur', q=True, v=True)
+        cmds.setAttr("MASH3_Offset.Envelope", cmds.intSlider('ville_hauteur', q=True, v=True)/100.)
 
     def density(self):
         #a regeler en fonction de la hauteur 
-        cmds.setAttr("MASH3_Visibility.randEnvelope", cmds.intSlider('sliderSlumD', q=True, v=True)/100.)
+        cmds.setAttr("MASH3_Visibility.randEnvelope", cmds.intSlider('ville_repartition_random', q=True, v=True)/100.)
     
     def randomRotation(self):
-        cmds.setAttr("MASH3_Random.rotationY", cmds.intSlider('sliderHousesR', q=True, v=True)/100.)
+        cmds.setAttr("MASH3_Random.rotationY", cmds.intSlider('ville_rotationY', q=True, v=True)/100.)
 
     def diametre(self):
         #en fonction de muraille 
-        diametre = cmds.intSlider('sliderSlumDiam', q=True, v=True)
+        diametre = cmds.intSlider('ville_diametre', q=True, v=True)
         cmds.setAttr("MASH3_Distribute.gridAmplitudeX", diametre)
         cmds.setAttr("MASH3_Distribute.gridAmplitudeZ", diametre)
     

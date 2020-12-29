@@ -18,7 +18,7 @@ class InnerDoor(Door):
             self.door = cmds.duplicate("ASSET_Porte:PORTE",n='inner_door')
         else:
             self.door = cmds.polyCube(w=self.doorSize.x, h=self.doorSize.y, d=self.doorSize.z, n="inner_door")
-        
+            cmds.xform('inner_door',piv=(0,-self.doorSize.y/2,0))
         #cmds.xform('inner_door',piv=(0,-self.doorSize.y/2,0))
         self.locatorLeft = cmds.spaceLocator(p=(-self.doorSize.x/2, cmds.getAttr("inner_door.translateY"),0),n='inner_door_locator_left')
         self.locatorRight = cmds.spaceLocator(p=(self.doorSize.x/2, cmds.getAttr("inner_door.translateY"),0),n='inner_door_locator_right')
@@ -37,7 +37,7 @@ class OuterDoor(Door):
             self.door = cmds.duplicate("ASSET_Porte_ext:porte_exter",n='outer_door')
         else:
             self.door = cmds.polyCube(w=self.doorSize.x, h=self.doorSize.y, d=self.doorSize.z, n="outer_door")
-        
+            cmds.xform('outer_door',piv=(0,-self.doorSize.y/2,0))
         #cmds.xform('outer_door',piv=(0,-self.doorSize.y/2,0))
         self.locatorLeft = cmds.spaceLocator(p=(-self.doorSize.x/2,cmds.getAttr("outer_door.translateY"),0),n='outer_door_locator_left')
         self.locatorRight = cmds.spaceLocator(p=(self.doorSize.x/2,cmds.getAttr("outer_door.translateY"),0),n='outer_door_locator_right')

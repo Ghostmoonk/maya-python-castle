@@ -7,7 +7,6 @@ import maya.app.general.positionAlongCurve as mayaGeneral
 import maya_python_castle.Doors as Doors
 import maya_python_castle.Towers as Towers
 import maya_python_castle.Walls as Walls
-import maya_python_castle.Ground as Ground
 
 # Import FBX
 # ExteriorWallFbx = cmds.file(
@@ -72,6 +71,18 @@ class Rampart(object):
         wallsNeeded = int(math.ceil(segmentLength/ self.getWallSize().x))
         spawnPointA = Vector3(cmds.pointPosition(self.curveName+ '.cv['+ str(self.resolution)+']')[0],cmds.pointPosition(self.curveName+ '.cv['+ str(self.resolution)+']',w=True)[1],cmds.pointPosition(self.curveName+ '.cv['+ str(self.resolution)+']')[2])
         spawnPointB = Vector3(cmds.pointPosition(self.curveName+ '.cv['+ str(self.resolution -1) +']')[0],cmds.pointPosition(self.curveName+ '.cv['+ str(self.resolution -1) +']',w=True)[1],cmds.pointPosition(self.curveName+ '.cv['+ str(self.resolution -1) +']')[2])
+        angle = float(self.apertureAngle/2.0 + (360.0-self.apertureAngle)/self.resolution/2)
+        #print("Pour wallsize = " + str(self.getWallSize()))
+        wallBoundings = Vector3(
+            abs(self.getWallSize().x * math.sin(math.radians(angle))) + abs(self.getWallSize().z * math.cos(math.radians(angle))),
+            0,
+            abs(self.getWallSize().x * math.cos(math.radians(angle))) + abs(self.getWallSize().z * math.sin(math.radians(angle)))
+            )
+
+        #print(wallsNeeded * wallBoundings.x - Vector3.getDistanceBetweenTwoPoints(Vector3(spawnPointA.x,0,0),Vector3(spawnPointB.x,0,0))) 
+        #print(wallsNeeded * wallBoundings.x - Vector3.getDistanceBetweenTwoPoints(Vector3(0,0,spawnPointA.z),Vector3(0,0,spawnPointB.z))) 
+        # print("x = " + str(abs(self.getWallSize().x * math.sin(math.radians(angle))) + abs(self.getWallSize().z * math.cos(math.radians(angle)))))
+        # print("y = " + str(abs(self.getWallSize().x * math.cos(math.radians(angle))) + abs(self.getWallSize().z * math.sin(math.radians(angle)))))
 
         for i in range(0,self.resolution):
             #Create a segment of wall
@@ -80,6 +91,10 @@ class Rampart(object):
                             spawnPointA.x - (spawnPointA.x - spawnPointB.x) * j/wallsNeeded - (spawnPointA.x - spawnPointB.x) / wallsNeeded/2,
                             spawnPointA.y - (spawnPointA.y - spawnPointB.y) * j/wallsNeeded - (spawnPointA.y - spawnPointB.y) / wallsNeeded/2,
                             spawnPointA.z - (spawnPointA.z - spawnPointB.z) * j/wallsNeeded - (spawnPointA.z - spawnPointB.z) / wallsNeeded/2)
+                # spawnWallPosition = Vector3(
+                #             spawnPointA.x - wallBoundings.x/2 - wallBoundings.x/2*j - difference/(wallsNeeded-1),
+                #             spawnPointA.y - (spawnPointA.y - spawnPointB.y) * j/wallsNeeded - (spawnPointA.y - spawnPointB.y) / wallsNeeded/2,
+                #             spawnPointA.z - (spawnPointA.z - spawnPointB.z) * j/wallsNeeded - (spawnPointA.z - spawnPointB.z) / wallsNeeded/2)
 
                 wall = self.createWall(spawnWallPosition, Vector3(0.0,float(self.apertureAngle/2.0 + (360.0-self.apertureAngle)/self.resolution/2),0.0))
                 self.walls.append(wall)
@@ -155,10 +170,18 @@ class InteriorRampart(Rampart):
     def createSegmentsWalls(self):
         super(InteriorRampart,self).createSegmentsWalls(self.wallsGroupName)
 
-    def createTowers(self):
+    def createTowers(self, towerAmount):
+        print(towerAmount)
+        #If the group already exists
+        if(not cmds.objExists(self.towersGroupName)):
+            cmds.group(em=True, n=self.towersGroupName)
+        else:
+            #Clear the group
+            old_towers = cmds.listRelatives(self.towersGroupName,c=True)
+            cmds.delete(old_towers)
         #Array of tower's name to select them and positionAlongCurve
-        towersGroup = cmds.group(em=True, n=self.towersGroupName)
         towerNames = []
+        self.towerAmount = towerAmount
         for i in range(0,self.towerAmount):
             tower = Towers.Tower(Vector3(0,0,0))
             self.towers.append(tower)
@@ -173,7 +196,7 @@ class InteriorRampart(Rampart):
     def instantiateRampartCurveBased(self):
         super(InteriorRampart,self).instantiateRampartCurveBased('InteriorRampart_curve')
         #Step 4 : Create Towers
-        self.createTowers()
+        self.createTowers(self.towerAmount)
         #Step 5 : Create Door
         doorPosition = Vector3(self.center.x,self.center.y,self.radius)
         self.door = Doors.InnerDoor(doorPosition,Vector3(0,0,0))
@@ -247,6 +270,7 @@ class GroundRampart(Rampart):
     
     def instantiateRampartCurveBased(self):
         self.groundObject = cmds.polyCylinder(sx=self.resolution,sz=1, r=self.radius, h=self.groundHeight, n="inner_ground")
+        cmds.rotate(0,-90,0)
         cmds.xform(self.groundObject,piv=(self.center.x,self.groundHeight/2.0,self.center.z),ws=True)
         cmds.move(self.center.x, self.center.y-self.groundHeight/2.0, self.center.z, self.groundObject)
         #cmds.move(self.center.x, self.center.y, self.center.z, self.groundObject)
