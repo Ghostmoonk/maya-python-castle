@@ -16,6 +16,11 @@
   <property name="windowTitle">
    <string>Generateur de Chateau</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background-image : url(&quot;D:/Users/Justine/ATI/python/maya-python-castle/pierre.jpg&quot;);
+}</string>
+  </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
@@ -28,6 +33,11 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true">QWidget{
+background-image : url(&quot;D:/Users/Justine/ATI/python/maya-python-castle/papyrus.jpg&quot;);
+}</string>
+      </property>
       <property name="currentIndex">
        <number>0</number>
       </property>
@@ -64,6 +74,9 @@
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_3">
+         <property name="spacing">
+          <number>10</number>
+         </property>
          <item row="1" column="0">
           <layout class="QHBoxLayout" name="horizontalLayout_7">
            <item>
@@ -105,6 +118,12 @@
          </item>
          <item row="6" column="0">
           <layout class="QGridLayout" name="gridLayout_4">
+           <property name="horizontalSpacing">
+            <number>10</number>
+           </property>
+           <property name="verticalSpacing">
+            <number>0</number>
+           </property>
            <item row="1" column="1">
             <widget class="QSlider" name="horizontalSlider_7">
              <property name="orientation">
@@ -116,6 +135,9 @@
             <widget class="QLabel" name="label_28">
              <property name="text">
               <string>X</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -137,6 +159,9 @@
             <widget class="QLabel" name="label_29">
              <property name="text">
               <string>Z</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
              </property>
             </widget>
            </item>
@@ -220,6 +245,16 @@
         </layout>
        </widget>
       </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Tours</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_9">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
+      </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
         <string>Slum</string>
@@ -268,26 +303,32 @@
          <property name="verticalSpacing">
           <number>6</number>
          </property>
-         <item row="1" column="1">
-          <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item row="3" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
            <item>
-            <widget class="QLabel" name="label_7">
+            <widget class="QLabel" name="label_9">
              <property name="text">
-              <string>Random Rotation</string>
+              <string>Diametre </string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QSlider" name="sliderHousesR">
+            <widget class="QSlider" name="sliderSlumDiam">
+             <property name="maximum">
+              <number>200</number>
+             </property>
+             <property name="value">
+              <number>100</number>
+             </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_8">
+            <widget class="QLabel" name="label_10">
              <property name="text">
-              <string>0</string>
+              <string>100</string>
              </property>
             </widget>
            </item>
@@ -376,25 +417,7 @@
            </item>
           </layout>
          </item>
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_5">
-           <property name="font">
-            <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-             <underline>true</underline>
-            </font>
-           </property>
-           <property name="text">
-            <string>Slum</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
+         <item row="0" column="2">
           <widget class="QLabel" name="label_6">
            <property name="font">
             <font>
@@ -412,32 +435,55 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item row="1" column="2">
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
            <item>
-            <widget class="QLabel" name="label_9">
+            <widget class="QLabel" name="label_7">
              <property name="text">
-              <string>Diametre </string>
+              <string>Random Rotation</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QSlider" name="sliderSlumDiam">
-             <property name="maximum">
-              <number>200</number>
-             </property>
-             <property name="value">
-              <number>100</number>
-             </property>
+            <widget class="QSlider" name="sliderHousesR">
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_10">
+            <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>100</string>
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item row="0" column="0">
+          <layout class="QHBoxLayout" name="horizontalLayout_12">
+           <item>
+            <widget class="QLabel" name="label_5">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+               <underline>true</underline>
+              </font>
+             </property>
+             <property name="text">
+              <string>Slum</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_18">
+             <property name="text">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/newPrefix/finn.PNG&quot; width=&quot;30&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
             </widget>
            </item>
@@ -445,11 +491,6 @@
          </item>
         </layout>
        </widget>
-      </widget>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Tours</string>
-       </attribute>
       </widget>
      </widget>
     </item>
@@ -466,7 +507,9 @@
  <tabstops>
   <tabstop>sliderSlumH</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>sliderSlumH</sender>

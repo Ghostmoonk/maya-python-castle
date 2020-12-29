@@ -33,5 +33,13 @@ cmds.setAttr("ramp4.colorEntryList[1].position", 0.16)
 
 
 """MASH4 = TOURS """
+#random hauteur
+cmds.setAttr("MASH4_Random.positionY", 41)
+
+#rotation tours : entre 0 et 180°
+cmds.setAttr("MASH4_Random.rotationY, 0)
+
+
+
 
 
