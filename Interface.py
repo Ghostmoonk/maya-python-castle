@@ -18,7 +18,7 @@ def close_callback(window, *args):
 #print(path.replace("\\","/))
 class Scene:
     def __init__(self):
-        self.interface = cmds.loadUI(f=cmds.internalVar(usd=True) + 'maya_python_castle/Castle.ui')
+        self.interface = cmds.loadUI(f=cmds.internalVar(usd=True) + 'maya-python-castle/Castle.ui')
         self.windows = cmds.showWindow(self.interface)
         #↓cmds.button('buttonClose', edit=True, command=functools.partial(close_callback, self.interface))
         self.slum= Slum()
