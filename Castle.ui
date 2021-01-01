@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>618</width>
-    <height>440</height>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@
      <enum>QTabWidget::North</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="shapes_tab">
      <attribute name="title">
@@ -1061,7 +1061,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Hauteur min/max</string>
+         <string>Nombre de tours</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_16">
@@ -1074,7 +1074,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Rayon moyen</string>
+         <string>Hauteur</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_17">
@@ -1087,7 +1087,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Nombre de sous-bâtiments</string>
+         <string>Rotation</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_18">
@@ -1109,14 +1109,14 @@
           <x>140</x>
           <y>10</y>
           <width>20</width>
-          <height>181</height>
+          <height>281</height>
          </rect>
         </property>
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="bp_hauteur_min">
+       <widget class="QSlider" name="bp_nombre">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -1125,50 +1125,17 @@
           <height>22</height>
          </rect>
         </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+        <property name="maximum">
+         <number>10</number>
         </property>
-       </widget>
-       <widget class="QSlider" name="bp_hauteur_max">
-        <property name="geometry">
-         <rect>
-          <x>370</x>
-          <y>20</y>
-          <width>161</width>
-          <height>22</height>
-         </rect>
+        <property name="value">
+         <number>3</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QLabel" name="label_30">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>10</y>
-          <width>21</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>min</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_31">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>10</y>
-          <width>21</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>max</string>
-        </property>
-       </widget>
-       <widget class="QSlider" name="bp_radius_medium">
+       <widget class="QSlider" name="bp_hauteur">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -1177,11 +1144,20 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>50</number>
+        </property>
+        <property name="sliderPosition">
+         <number>50</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="bp_amount">
+       <widget class="QSlider" name="bp_rotation">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -1190,34 +1166,24 @@
           <height>22</height>
          </rect>
         </property>
+        <property name="maximum">
+         <number>180</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_62">
-        <property name="geometry">
-         <rect>
-          <x>430</x>
-          <y>40</y>
-          <width>51</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_63">
         <property name="geometry">
          <rect>
-          <x>230</x>
-          <y>40</y>
+          <x>340</x>
+          <y>20</y>
           <width>51</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>0</string>
+         <string>3</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_64">
@@ -1230,7 +1196,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>0</string>
+         <string>50</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_65">
@@ -1244,6 +1210,160 @@
         </property>
         <property name="text">
          <string>0</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_30">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>180</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Ecart entre les tours</string>
+        </property>
+       </widget>
+       <widget class="QSlider" name="bp_ecart_h">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>180</y>
+          <width>161</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>42</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QSlider" name="bp_ecart_v">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>180</y>
+          <width>161</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="minimum">
+         <number>7</number>
+        </property>
+        <property name="maximum">
+         <number>20</number>
+        </property>
+        <property name="value">
+         <number>10</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_31">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>160</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Horizontal</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_62">
+        <property name="geometry">
+         <rect>
+          <x>450</x>
+          <y>160</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Vertical</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_76">
+        <property name="geometry">
+         <rect>
+          <x>240</x>
+          <y>200</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>42</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_77">
+        <property name="geometry">
+         <rect>
+          <x>460</x>
+          <y>200</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>10</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_78">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>230</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Placement aléatoire</string>
+        </property>
+       </widget>
+       <widget class="QSlider" name="bp_placement">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>230</y>
+          <width>160</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
+         <number>50</number>
+        </property>
+        <property name="sliderPosition">
+         <number>50</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_79">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>230</y>
+          <width>51</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>50</string>
         </property>
        </widget>
       </widget>
@@ -1275,32 +1395,6 @@
         </property>
         <property name="text">
          <string>Repartition aléatoire</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_21">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>80</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Positionnement aléatoire</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_22">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>110</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Seed</string>
         </property>
        </widget>
        <widget class="Line" name="line_6">
@@ -1351,128 +1445,11 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QSlider" name="ville_position_random">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>80</y>
-          <width>160</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QSlider" name="ville_seed">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>110</y>
-          <width>160</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QSlider" name="ville_amount">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>140</y>
-          <width>160</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_32">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>140</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Nombre</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_33">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>170</y>
-          <width>131</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Nombre - aléatoire</string>
-        </property>
-       </widget>
-       <widget class="QSlider" name="ville_amount_min">
-        <property name="geometry">
-         <rect>
-          <x>160</x>
-          <y>170</y>
-          <width>160</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QSlider" name="ville_amount_max">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>170</y>
-          <width>160</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_34">
-        <property name="geometry">
-         <rect>
-          <x>230</x>
-          <y>160</y>
-          <width>21</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>min</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_35">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>160</y>
-          <width>21</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>max</string>
-        </property>
-       </widget>
        <widget class="QLabel" name="label_41">
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>210</y>
+          <y>80</y>
           <width>131</width>
           <height>16</height>
          </rect>
@@ -1485,7 +1462,7 @@
         <property name="geometry">
          <rect>
           <x>160</x>
-          <y>210</y>
+          <y>80</y>
           <width>160</width>
           <height>22</height>
          </rect>
@@ -1501,7 +1478,7 @@
         <property name="geometry">
          <rect>
           <x>10</x>
-          <y>240</y>
+          <y>110</y>
           <width>131</width>
           <height>16</height>
          </rect>
@@ -1514,7 +1491,7 @@
         <property name="geometry">
          <rect>
           <x>160</x>
-          <y>240</y>
+          <y>110</y>
           <width>160</width>
           <height>22</height>
          </rect>
@@ -1555,7 +1532,7 @@
          <string>0</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_69">
+       <widget class="QLabel" name="label_74">
         <property name="geometry">
          <rect>
           <x>330</x>
@@ -1568,82 +1545,87 @@
          <string>0</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_70">
+       <widget class="QLabel" name="label_75">
         <property name="geometry">
          <rect>
-          <x>330</x>
+          <x>340</x>
           <y>110</y>
           <width>51</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_71">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>140</y>
-          <width>51</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_72">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>190</y>
-          <width>51</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_73">
-        <property name="geometry">
-         <rect>
-          <x>410</x>
-          <y>190</y>
-          <width>51</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_74">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>210</y>
-          <width>51</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_75">
-        <property name="geometry">
-         <rect>
-          <x>330</x>
-          <y>240</y>
-          <width>51</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
          <string>80</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_69">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>160</y>
+          <width>131</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Courbe</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>150</y>
+          <width>75</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>80</width>
+          <height>80</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>150</y>
+          <width>75</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>80</width>
+          <height>80</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_9">
+        <property name="geometry">
+         <rect>
+          <x>360</x>
+          <y>150</y>
+          <width>75</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>80</width>
+          <height>80</height>
+         </size>
         </property>
        </widget>
       </widget>
@@ -2128,7 +2110,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>bp_hauteur_min</sender>
+   <sender>bp_nombre</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_63</receiver>
    <slot>setNum(int)</slot>
@@ -2138,29 +2120,13 @@
      <y>94</y>
     </hint>
     <hint type="destinationlabel">
-     <x>235</x>
-     <y>115</y>
+     <x>349</x>
+     <y>100</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>bp_hauteur_max</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_62</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>451</x>
-     <y>93</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>442</x>
-     <y>111</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bp_radius_medium</sender>
+   <sender>bp_hauteur</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_64</receiver>
    <slot>setNum(int)</slot>
@@ -2176,7 +2142,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>bp_amount</sender>
+   <sender>bp_rotation</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_65</receiver>
    <slot>setNum(int)</slot>
@@ -2240,98 +2206,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>ville_position_random</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_69</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>306</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>340</x>
-     <y>156</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ville_seed</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_70</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>267</x>
-     <y>175</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>338</x>
-     <y>183</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ville_amount</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_71</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>271</x>
-     <y>213</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>337</x>
-     <y>211</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ville_amount_min</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_72</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>263</x>
-     <y>246</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>257</x>
-     <y>260</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ville_amount_max</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_73</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>436</x>
-     <y>241</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>420</x>
-     <y>262</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>ville_rotationY</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_74</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>219</x>
-     <y>279</y>
+     <x>223</x>
+     <y>166</y>
     </hint>
     <hint type="destinationlabel">
-     <x>358</x>
-     <y>284</y>
+     <x>362</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -2342,12 +2228,44 @@
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>215</x>
-     <y>319</y>
+     <x>219</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
-     <x>361</x>
-     <y>312</y>
+     <x>375</x>
+     <y>190</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bp_ecart_h</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_76</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>241</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bp_ecart_v</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_77</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>479</x>
+     <y>261</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>476</x>
+     <y>280</y>
     </hint>
    </hints>
   </connection>

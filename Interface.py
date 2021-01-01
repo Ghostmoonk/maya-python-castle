@@ -18,7 +18,7 @@ def close_callback(window, *args):
 #print(path.replace("\\","/))
 class Scene:
     def __init__(self):
-        self.interface = cmds.loadUI(f=cmds.internalVar(usd=True) + 'maya-python-castle/Castle.ui')
+        self.interface = cmds.loadUI(f=cmds.internalVar(usd=True) + 'maya_python_castle/Castle.ui')
         self.windows = cmds.showWindow(self.interface)
         #↓cmds.button('buttonClose', edit=True, command=functools.partial(close_callback, self.interface))
         self.slum= Slum()
@@ -94,6 +94,32 @@ class Slum:
     
     def map(self):
         cmds.setAttr("ramp4.colorEntryList[1].position", 0.16)
+
+class Tours:
+    def __init__(self):
+        return
+    
+    def hauteur(self):
+        cmds.setAttr("MASH4_Offset.Envelope", cmds.intSlider('bp_hauteur', q=True, v=True)/100.)
+
+    def nombreTours(self):
+        cmds.setAttr("MASH4_Distribute.pointCount",  cmds.intSlider('bp_nombre', q=True, v=True))
+
+    def rotation(self):
+        cmds.setAttr("MASH4_Random.rotationY", cmds.intSlider('bp_rotation', q=True, v=True))
+
+    def ecartH(self):
+        cmds.setAttr("MASH4_Distribute.radialRadius", cmds.intSlider('bp_ecart_h', q=True, v=True))
+
+    def ecartV(self):
+        cmds.setAttr("MASH4_Random.positionY", cmds.intSlider('bp_ecart_v', q=True, v=True))
+
+    def placement(self):
+        cmds.setAttr("MASH4_Random.randomSeed", cmds.intSlider('bp_placement', q=True, v=True))
+
+
+
+
 
 
 scene=Scene()

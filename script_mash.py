@@ -33,5 +33,28 @@ cmds.setAttr("ramp4.colorEntryList[1].position", 0.16)
 
 
 """MASH4 = TOURS """
+# ecart entre les tours hauteurs
+cmds.setAttr("MASH4_Random.positionY", 41)
+
+#rotation tours : entre 0 et 180?
+cmds.setAttr("MASH4_Random.rotationY", 0)
+
+#random seed -> placement aloeatoire
+cmds.setAttr("MASH4_Random.randomSeed", 85)
+
+#hauteur de l'ensemble
+#faire gaffe pour pas que sorte du sol
+#entre 0 et 1 mais 1 sort du sol
+cmds.setAttr("MASH4_Offset.Envelope", 0.313187)
+
+#nombre de tours
+cmds.setAttr("MASH4_Distribute.pointCount", 2)
+
+#ecart entre les tours (horizontal)
+# entre 7  et 20
+cmds.setAttr("MASH4_Distribute.radialRadius", 10)
+
+
+
 
 
