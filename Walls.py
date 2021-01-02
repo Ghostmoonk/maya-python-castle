@@ -46,9 +46,10 @@ class GroundWall(Wall):
             template = cmds.duplicate("ASSET_Muraille_int_bas:Muraille_int_bas", n="ground_wall_template")
         else:
             template = cmds.polyCube(w=wallSize.x, h=wallSize.y, d=wallSize.z, n="ground_wall_template")
-            cmds.xform("ground_wall_template",piv=(0,-wallSize.y/2,0))
-            cmds.move(0,wallSize.y/2,0, "ground_wall_template")
+            cmds.xform("ground_wall_template",piv=(0,wallSize.y/2,0))
+            cmds.move(0,-wallSize.y/2,0, "ground_wall_template")
             cmds.makeIdentity(a=True,t=True,s=True)
+            print("Groundwall")
         
         cmds.hide("ground_wall_template")
     else:
