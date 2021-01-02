@@ -31,7 +31,30 @@ def changerSliderHauteur():
 
 def changerSliderRayonInt():
     maximum=cmds.intSlider('ground_rayon', q=True, v=True)
+    if(cmds.intSlider('ri_rayon', q=True, v=True)>maximum):
+        cmds.intSlider('ri_rayon', e=True, value=maximum)
     cmds.intSlider('ri_rayon', e=True, max=maximum)
+
+def changerSliderRayonGround():
+    maximum=cmds.intSlider('re_rayon', q=True, v=True)
+    min=cmds.intSlider('ri_rayon', q=True, v=True)
+    if(cmds.intSlider('ground_rayon', q=True, v=True)>maximum):
+        cmds.intSlider('ground_rayon', e=True, value=maximum-1)
+    if(cmds.intSlider('ground_rayon', q=True, v=True)<min):
+        cmds.intSlider('ground_rayon', e=True, value=min+1)
+    cmds.intSlider('ground_rayon', e=True,min=min, max=maximum)
+
+def changerSliderRayonExt():
+    min=cmds.intSlider('ground_rayon', q=True, v=True)+1
+    if(cmds.intSlider('re_rayon', q=True, v=True)<min):
+        cmds.intSlider('re_rayon', e=True, value=min)
+    cmds.intSlider('re_rayon', e=True, min=min)
+
+def changerResolutionSol():
+    min=cmds.intSlider('ri_resolution', q=True, v=True)
+    if(cmds.intSlider('ground_resolution', q=True, v=True)<min):
+        cmds.intSlider('ground_resolution', e=True, value=min)
+    cmds.intSlider('ground_resolution', e=True, min=min)
 
 #print(path.replace("\\","/))
 class Scene:
@@ -109,7 +132,10 @@ class Scene:
             cmds.intSlider('re_rayon', q=True, v=True),
             Vector3(0,0,0),
             Vector3(float(cmds.intSlider("re_decalageX", q=True,v=True)),0,float(cmds.intSlider("re_decalageZ", q=True,v=True))))
-            
+        
+        cmds.intSlider("ground_rayon", e=True, dc="changerSliderRayonGround()")
+        cmds.intSlider("ground_resolution", e=True, dc="changerResolutionSol()")
+
         groundRampart = Ramparts.GroundRampart(
             cmds.intSlider('ground_resolution', q=True, v=True),
             0.0,
@@ -118,6 +144,9 @@ class Scene:
             cmds.intSlider('ground_rayon', q=True, v=True),
             Vector3(0,10,0),
             cmds.intSlider('ground_hauteur', q=True, v=True))
+
+        cmds.intSlider("re_rayon", e=True, dc="changerSliderRayonExt()")
+        
 
         self.castle = Castle.Castle(interiorRampart,exteriorRampart,groundRampart)
 
