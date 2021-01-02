@@ -14,7 +14,7 @@ class Wall(object):
         cls.index += 1
 
 class InnerWall(Wall):
-    wallSize = Vector3(10, 12, 3)
+    wallSize = Vector3(15, 12, 3)
 
     if(not cmds.objExists("inner_wall_template")):
         if(cmds.objExists("ASSET_Muraille_int_haut:Murailles_int_haut")):
@@ -22,6 +22,8 @@ class InnerWall(Wall):
         else:
             template = cmds.polyCube(w=wallSize.x, h=wallSize.y, d=wallSize.z, n="inner_wall_template")
             cmds.xform("inner_wall_template",piv=(0,-wallSize.y/2,0))
+            cmds.move(0,wallSize.y/2,0,"inner_wall_template")
+            cmds.makeIdentity(a=True,t=True,s=True)
         
         cmds.hide("inner_wall_template")
     else:
@@ -38,13 +40,15 @@ class InnerWall(Wall):
         return
 
 class GroundWall(Wall):
-    wallSize = Vector3(40,20,10)
+    wallSize = Vector3(34,20,10)
     if(not cmds.objExists("ground_wall_template")):
         if(cmds.objExists("ASSET_Muraille_int_bas:Muraille_int_bas")):
             template = cmds.duplicate("ASSET_Muraille_int_bas:Muraille_int_bas", n="ground_wall_template")
         else:
             template = cmds.polyCube(w=wallSize.x, h=wallSize.y, d=wallSize.z, n="ground_wall_template")
             cmds.xform("ground_wall_template",piv=(0,-wallSize.y/2,0))
+            cmds.move(0,wallSize.y/2,0, "ground_wall_template")
+            cmds.makeIdentity(a=True,t=True,s=True)
         
         cmds.hide("ground_wall_template")
     else:
@@ -61,13 +65,16 @@ class GroundWall(Wall):
         return
 
 class OuterWall(Wall):
-    wallSize = Vector3(20, 15, 2)
+    wallSize = Vector3(30, 15, 2)
     if(not cmds.objExists("outer_wall_template")):
         if(cmds.objExists("ASSET_Muraille_ext_mur:Muraille_ext")):
             template = cmds.duplicate("ASSET_Muraille_ext_mur:Muraille_ext", n="outer_wall_template")
         else:
             template = cmds.polyCube(w=wallSize.x, h=wallSize.y, d=wallSize.z, n="outer_wall_template")
             cmds.xform("outer_wall_template",piv=(0,-wallSize.y/2,0))
+            cmds.move(0,wallSize.y/2,0,"outer_wall_template")
+            cmds.makeIdentity(a=True,t=True,s=True)
+
         cmds.hide("outer_wall_template")
     else:
         template = cmds.ls("outer_wall_template")

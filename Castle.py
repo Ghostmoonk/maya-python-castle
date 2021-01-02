@@ -15,8 +15,11 @@ reload(Towers)
 reload(Doors)
 reload(Ramparts)
 
+#Create Ramparts layer
 if( not cmds.objExists("Ramparts")):
     rampartsLayer = cmds.createDisplayLayer(n="Ramparts", mc=True,num=1)
+
+print(cmds.internalVar(usd=True))
 
 class Castle:
     
@@ -34,8 +37,15 @@ class Castle:
         groupNames.append(self.groundRampart.groupName)
 
         self.name = cmds.group(groupNames,n="Castle")
-        cmds.editDisplayLayerMembers(rampartsLayer, 'Castle')
+        self.ResetGroupLayer()
 
+        #Show mash layer
+        if(cmds.objExists("MashCity")):
+            cmds.setAttr('MashCity.visibility',True)
+    
+    def ResetGroupLayer(self):
+        cmds.editDisplayLayerMembers(rampartsLayer, 'Castle')
+        
 # if(cmds.objExists("Castle")):
 #     cmds.select("Castle")
 #     cmds.delete()

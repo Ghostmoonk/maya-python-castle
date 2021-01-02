@@ -95,7 +95,7 @@ class Rampart(object):
                 #             spawnPointA.x - wallBoundings.x/2 - wallBoundings.x/2*j - difference/(wallsNeeded-1),
                 #             spawnPointA.y - (spawnPointA.y - spawnPointB.y) * j/wallsNeeded - (spawnPointA.y - spawnPointB.y) / wallsNeeded/2,
                 #             spawnPointA.z - (spawnPointA.z - spawnPointB.z) * j/wallsNeeded - (spawnPointA.z - spawnPointB.z) / wallsNeeded/2)
-
+                print(spawnWallPosition)
                 wall = self.createWall(spawnWallPosition, Vector3(0.0,float(self.apertureAngle/2.0 + (360.0-self.apertureAngle)/self.resolution/2),0.0))
                 self.walls.append(wall)
                 wallsSegmentNames.append(wall.name)
@@ -171,7 +171,6 @@ class InteriorRampart(Rampart):
         super(InteriorRampart,self).createSegmentsWalls(self.wallsGroupName)
 
     def createTowers(self, towerAmount):
-        print(towerAmount)
         #If the group already exists
         if(not cmds.objExists(self.towersGroupName)):
             cmds.group(em=True, n=self.towersGroupName)
@@ -214,7 +213,8 @@ class InteriorRampart(Rampart):
         self.createDoorWalls(rightSideDoorPosition,rightExtremityCurve,"right_in_side_door_walls","right_in_side_door_curve")
 
         #Step 7 : Group all
-        self.groupRampart([self.curveName,self.towersGroupName,self.wallsGroupName,self.door.groupName,"left_in_side_door_walls","right_in_side_door_walls"],self.groupName)    
+        self.groupRampart([self.curveName,self.towersGroupName,self.wallsGroupName,self.door.groupName,"left_in_side_door_walls","right_in_side_door_walls"],self.groupName)
+        cmds.xform(self.groupName, piv=(self.center.x,self.center.y,self.center.z))
 
 class ExteriorRampart(Rampart):
 
@@ -255,7 +255,7 @@ class ExteriorRampart(Rampart):
 
         #Step 6 : Group all
         self.groupRampart([self.curveName,self.wallsGroupName,self.door.groupName,"left_out_side_door_walls","right_out_side_door_walls"], self.groupName)    
-
+        cmds.xform(self.groupName, piv=(self.center.x,self.center.y,self.center.z))
 class GroundRampart(Rampart):
 
     def __init__(self, resolution, apertureAngle, wallHeight, wallDepth, radius, center, groundHeight):

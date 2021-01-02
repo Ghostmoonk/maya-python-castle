@@ -26,9 +26,9 @@ class Scene:
         print(cmds.button('generate_slum_button', query=True, exists=True))
         cmds.button('generate_slum_button',edit=True, c='scene.generateSlum()')
         cmds.button('generate_castle_button',edit=True, c='scene.generateCastle()')
-        cmds.button('courbe_base', edit=True, c='slum.CourbeBasique()')
-        cmds.button('courbe_bombee', edit=True, c='slum.CourbeBombee()')
-        cmds.button('courbe_droite', edit=True, c='slum.CourbeDroite()')
+        cmds.button('courbe_base', edit=True, c='scene.slum.CourbeBasique()')
+        cmds.button('courbe_bombee', edit=True, c='scene.slum.CourbeBombee()')
+        cmds.button('courbe_droite', edit=True, c='scene.slum.CourbeDroite()')
 
 
         self. towerAmountSlider = cmds.intSlider(
@@ -97,7 +97,7 @@ class Slum:
         cmds.setAttr("MASH3_Distribute.gridAmplitudeZ", diametre)
     
     def CourbeBasique(self):
-       cmds.setAttr("ramp4.colorEntryList[1].position", 0.132)
+        cmds.setAttr("ramp4.colorEntryList[1].position", 0.132)
         cmds.setAttr("ramp4.colorEntryList[2].position", 0.352)
         cmds.setAttr("ramp4.colorEntryList[6].position", 0.431)
         cmds.setAttr("ramp4.colorEntryList[4].position", 0.587)
