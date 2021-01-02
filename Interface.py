@@ -49,6 +49,8 @@ class Scene:
         cmds.button('courbe_bombee', edit=True, c='scene.slum.CourbeBombee()')
         cmds.button('courbe_droite', edit=True, c='scene.slum.CourbeDroite()')
         cmds.button('close_button', edit=True, command=functools.partial(close_callback, self.interface))
+
+        self.generateCastle()
         
         self.towerAmountSlider = cmds.intSlider(
             'ri_tours',e=True,dc="scene.castle.interiorRampart.createTowers(cmds.intSlider(scene.towerAmountSlider,q=True,v=True))")
@@ -79,8 +81,8 @@ class Scene:
 
     
     def generateCastle(self):
-        scene.generateSlum()
-        scene.generateTours()
+        #scene.generateSlum()
+        #scene.generateTours()
         print("Generate")
         if(cmds.objExists("Castle")):
             cmds.select("Castle")

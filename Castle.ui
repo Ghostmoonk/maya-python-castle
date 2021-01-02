@@ -43,7 +43,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="shapes_rampart_int_tab">
        <attribute name="title">
@@ -357,7 +357,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>30</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_50">
@@ -1490,6 +1490,9 @@
         <property name="singleStep">
          <number>0</number>
         </property>
+        <property name="value">
+         <number>50</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -1504,6 +1507,9 @@
          </rect>
         </property>
         <property name="maximum">
+         <number>100</number>
+        </property>
+        <property name="value">
          <number>100</number>
         </property>
         <property name="orientation">
@@ -1567,6 +1573,9 @@
         <property name="maximum">
          <number>260</number>
         </property>
+        <property name="value">
+         <number>200</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -1581,7 +1590,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>0</string>
+         <string>50</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_68">
@@ -1594,7 +1603,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>0</string>
+         <string>100</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_74">
@@ -1620,7 +1629,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>80</string>
+         <string>200</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_69">
