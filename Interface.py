@@ -15,6 +15,23 @@ def close_callback(window, *args):
   print "Close!", window
   cmds.deleteUI(window, window=True)
 
+def changerSliderDensite():
+    maximum=cmds.intSlider('ville_hauteur', q=True, v=True)
+    if(maximum<=20):
+        maximum*=10
+        maximum+=1
+    else:
+        maximum=100
+    cmds.intSlider('ville_repartition_random', max=maximum, e=True)
+
+def changerSliderHauteur():
+    maximum=cmds.intSlider('bp_hauteur', q=True, v=True)
+    cmds.intSlider("ville_hauteur", e=True, max=maximum)
+
+def changerSliderRayonInt():
+    maximum=cmds.intSlider('ground_rayon', q=True, v=True)
+    cmds.intSlider('ri_rayon', e=True, max=maximum)
+
 #print(path.replace("\\","/))
 class Scene:
     def __init__(self):
@@ -22,15 +39,22 @@ class Scene:
         self.windows = cmds.showWindow(self.interface)
         #↓cmds.button('buttonClose', edit=True, command=functools.partial(close_callback, self.interface))
         self.slum= Slum()
+        self.tours=Tours()
         self.castle = ''
         print(cmds.button('generate_slum_button', query=True, exists=True))
         cmds.button('generate_slum_button',edit=True, c='scene.generateSlum()')
+        cmds.button('generate_bp_button',edit=True, c='scene.generateTours()')
         cmds.button('generate_castle_button',edit=True, c='scene.generateCastle()')
-        cmds.button('courbe_base', edit=True, c='slum.CourbeBasique()')
-        cmds.button('courbe_bombee', edit=True, c='slum.CourbeBombee()')
-        cmds.button('courbe_droite', edit=True, c='slum.CourbeDroite()')
+        cmds.button('generate_ri_button',edit=True, c='scene.generateRampInt()')
+        cmds.button('generate_re_button',edit=True, c='scene.generateRampExt()')
+        cmds.button('generate_ground_button',edit=True, c='scene.generateGroundRamp()')
 
 
+        cmds.button('courbe_base', edit=True, c='scene.slum.CourbeBasique()')
+        cmds.button('courbe_bombee', edit=True, c='scene.slum.CourbeBombee()')
+        cmds.button('courbe_droite', edit=True, c='scene.slum.CourbeDroite()')
+        cmds.button('close_button', edit=True, command=functools.partial(close_callback, self.interface))
+        
         self. towerAmountSlider = cmds.intSlider(
             'ri_tours',e=True,dc="scene.castle.interiorRampart.createTowers(cmds.intSlider(scene.towerAmountSlider,q=True,v=True))")
 
@@ -40,8 +64,53 @@ class Scene:
         scene.slum.height()
         scene.slum.randomRotation()
         scene.slum.diametre()
+        
+
+
+    def generateTours(self):
+        scene.tours.hauteur()
+        scene.tours.nombreTours()
+        scene.tours.rotation()
+        scene.tours.ecartH()
+        scene.tours.ecartV()
+        scene.tours.placement()
+
+    def generateRampInt(self):
+        interiorRampart = Ramparts.InteriorRampart(
+            cmds.intSlider('ri_resolution', q=True, v=True),
+            cmds.intSlider('ri_ouverture', q=True, v=True),
+            0.5, 
+            0.5,
+            cmds.intSlider('ri_rayon', q=True, v=True),
+            Vector3(0,10,0),
+            cmds.intSlider('ri_tours', q=True, v=True))
+        cmds.intSlider("ri_rayon", e=True, dc="changerSliderRayonInt()")
+
+    def generateRampExt(self):
+        exteriorRampart = Ramparts.ExteriorRampart(
+            cmds.intSlider('re_hauteur', q=True, v=True),
+            cmds.intSlider('re_ouverture', q=True, v=True),
+            0.5,
+            0.5,
+            cmds.intSlider('re_rayon', q=True, v=True),
+            Vector3(0,0,0))
+    
+    def generateGroundRamp(self):
+        groundRampart = Ramparts.GroundRampart(
+            cmds.intSlider('ground_resolution', q=True, v=True),
+            0.0,
+            0.5,
+            0.5,
+            cmds.intSlider('ground_rayon', q=True, v=True),
+            Vector3(0,10,0),
+            cmds.intSlider('ground_hauteur', q=True, v=True))
+
+
+
     
     def generateCastle(self):
+        scene.generateSlum()
+        scene.generateTours()
         print("Generate")
         if(cmds.objExists("Castle")):
             cmds.select("Castle")
@@ -55,6 +124,8 @@ class Scene:
             cmds.intSlider('ri_rayon', q=True, v=True),
             Vector3(0,10,0),
             cmds.intSlider('ri_tours', q=True, v=True))
+        cmds.intSlider("ri_rayon", e=True, dc="changerSliderRayonInt()")
+
         exteriorRampart = Ramparts.ExteriorRampart(
             cmds.intSlider('re_hauteur', q=True, v=True),
             cmds.intSlider('re_ouverture', q=True, v=True),
@@ -82,6 +153,7 @@ class Slum:
     def height(self):
         print cmds.intSlider('ville_hauteur', q=True, v=True)
         cmds.setAttr("MASH3_Offset.Envelope", cmds.intSlider('ville_hauteur', q=True, v=True)/100.)
+        cmds.intSlider("ville_hauteur", e=True, dc="changerSliderDensite()")
 
     def density(self):
         #a regeler en fonction de la hauteur 
@@ -97,7 +169,7 @@ class Slum:
         cmds.setAttr("MASH3_Distribute.gridAmplitudeZ", diametre)
     
     def CourbeBasique(self):
-       cmds.setAttr("ramp4.colorEntryList[1].position", 0.132)
+        cmds.setAttr("ramp4.colorEntryList[1].position", 0.132)
         cmds.setAttr("ramp4.colorEntryList[2].position", 0.352)
         cmds.setAttr("ramp4.colorEntryList[6].position", 0.431)
         cmds.setAttr("ramp4.colorEntryList[4].position", 0.587)
@@ -117,12 +189,13 @@ class Slum:
         cmds.setAttr("ramp4.colorEntryList[4].position", 0.664671)
         cmds.setAttr("ramp4.colorEntryList[3].position", 0.832335)
 
-class Tours:
+class Tours:#batiment principal
     def __init__(self):
         return
     
     def hauteur(self):
         cmds.setAttr("MASH4_Offset.Envelope", cmds.intSlider('bp_hauteur', q=True, v=True)/100.)
+        cmds.intSlider("bp_hauteur", e=True, dc="changerSliderHauteur()")
 
     def nombreTours(self):
         cmds.setAttr("MASH4_Distribute.pointCount",  cmds.intSlider('bp_nombre', q=True, v=True))

@@ -39,7 +39,7 @@
         <x>0</x>
         <y>0</y>
         <width>601</width>
-        <height>321</height>
+        <height>381</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -47,7 +47,7 @@
       </property>
       <widget class="QWidget" name="shapes_rampart_int_tab">
        <attribute name="title">
-        <string>Rampart interieur</string>
+        <string>Rempart interieur</string>
        </attribute>
        <widget class="QLabel" name="label">
         <property name="geometry">
@@ -399,10 +399,23 @@
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;10&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="generate_ri_button">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>320</y>
+          <width>291</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Générer Rempart Intérieur</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="shapes_rampart_ext_tab">
        <attribute name="title">
-        <string>Rampart exterieur</string>
+        <string>Rempart exterieur</string>
        </attribute>
        <widget class="QLabel" name="label_7">
         <property name="geometry">
@@ -694,10 +707,23 @@
          <string>0</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="generate_re_button">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>320</y>
+          <width>291</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Générer Rempart Extérieur</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
-        <string>Ground</string>
+        <string>Sol</string>
        </attribute>
        <widget class="QSlider" name="ground_hauteur">
         <property name="geometry">
@@ -845,6 +871,19 @@
         </property>
         <property name="text">
          <string>60</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="generate_ground_button">
+        <property name="geometry">
+         <rect>
+          <x>150</x>
+          <y>320</y>
+          <width>291</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Générer Sol</string>
         </property>
        </widget>
       </widget>
@@ -1046,6 +1085,19 @@
          <string>0</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="generate_tour_button">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>310</y>
+          <width>291</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Générer Tour</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_12">
        <attribute name="title">
@@ -1238,7 +1290,7 @@
          <number>100</number>
         </property>
         <property name="value">
-         <number>42</number>
+         <number>15</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -1302,7 +1354,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>42</string>
+         <string>15</string>
         </property>
        </widget>
        <widget class="QLabel" name="label_77">
@@ -1366,6 +1418,19 @@
          <string>50</string>
         </property>
        </widget>
+       <widget class="QPushButton" name="generate_bp_button">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>320</y>
+          <width>291</width>
+          <height>23</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Générer Bâtiment principal</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -1394,7 +1459,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Repartition aléatoire</string>
+         <string>Densité</string>
         </property>
        </widget>
        <widget class="Line" name="line_6">
@@ -1455,7 +1520,7 @@
          </rect>
         </property>
         <property name="text">
-         <string>Rotation - aléatoire</string>
+         <string>Rotation</string>
         </property>
        </widget>
        <widget class="QSlider" name="ville_rotationY">
@@ -1583,6 +1648,10 @@
         <property name="text">
          <string/>
         </property>
+        <property name="icon">
+         <iconset resource="Icons/courbe_base.qrc">
+          <normaloff>:/courbeB/courbe_base.png</normaloff>:/courbeB/courbe_base.png</iconset>
+        </property>
         <property name="iconSize">
          <size>
           <width>80</width>
@@ -1601,6 +1670,10 @@
         </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="Icons/courbe_base.qrc">
+          <normaloff>:/courbeD/courbe_droite.png</normaloff>:/courbeD/courbe_droite.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1621,6 +1694,10 @@
         <property name="text">
          <string/>
         </property>
+        <property name="icon">
+         <iconset resource="Icons/courbe_base.qrc">
+          <normaloff>:/courbeBo/courbe_bombee.png</normaloff>:/courbeBo/courbe_bombee.png</iconset>
+        </property>
         <property name="iconSize">
          <size>
           <width>80</width>
@@ -1628,113 +1705,17 @@
          </size>
         </property>
        </widget>
-      </widget>
-      <widget class="QWidget" name="tab_11">
-       <attribute name="title">
-        <string>Maison</string>
-       </attribute>
-       <widget class="QLabel" name="label_23">
+       <widget class="QPushButton" name="generate_slum_button">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>91</width>
-          <height>16</height>
+          <x>140</x>
+          <y>320</y>
+          <width>291</width>
+          <height>23</height>
          </rect>
         </property>
         <property name="text">
-         <string>Echelle</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_24">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>80</y>
-          <width>91</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Modèle</string>
-        </property>
-       </widget>
-       <widget class="Line" name="line_7">
-        <property name="geometry">
-         <rect>
-          <x>120</x>
-          <y>10</y>
-          <width>20</width>
-          <height>181</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_4">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>60</y>
-          <width>75</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_5">
-        <property name="geometry">
-         <rect>
-          <x>270</x>
-          <y>60</y>
-          <width>75</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_6">
-        <property name="geometry">
-         <rect>
-          <x>390</x>
-          <y>60</y>
-          <width>75</width>
-          <height>61</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QSlider" name="maison_scale">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>20</y>
-          <width>161</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_66">
-        <property name="geometry">
-         <rect>
-          <x>320</x>
-          <y>20</y>
-          <width>51</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>0</string>
+         <string>Générer Ville</string>
         </property>
        </widget>
       </widget>
@@ -1742,24 +1723,17 @@
      <widget class="QWidget" name="horizontalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>330</y>
+        <x>0</x>
+        <y>390</y>
         <width>591</width>
         <height>31</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <item>
-        <widget class="QPushButton" name="generate_castle_button">
+        <widget class="QPushButton" name="close_button">
          <property name="text">
-          <string>Generate castle</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="generate_slum_button">
-         <property name="text">
-          <string>Generate slum</string>
+          <string>Fermer</string>
          </property>
         </widget>
        </item>
@@ -1851,8 +1825,57 @@
  </widget>
  <resources>
   <include location="Icons/test.qrc"/>
+  <include location="Icons/courbe_base.qrc"/>
  </resources>
  <connections>
+  <connection>
+   <sender>ville_repartition_random</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_68</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>236</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>343</x>
+     <y>127</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ville_hauteur</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_67</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>274</x>
+     <y>96</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>334</x>
+     <y>94</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ville_diametre</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_75</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>219</x>
+     <y>196</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>375</x>
+     <y>190</y>
+    </hint>
+   </hints>
+  </connection>
   <connection>
    <sender>ri_hauteur</sender>
    <signal>valueChanged(int)</signal>
@@ -1870,82 +1893,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>ri_resolution</sender>
+   <sender>bp_ecart_v</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>label_47</receiver>
+   <receiver>label_77</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>280</x>
-     <y>125</y>
+     <x>479</x>
+     <y>261</y>
     </hint>
     <hint type="destinationlabel">
-     <x>348</x>
-     <y>124</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ri_rayon</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_48</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>279</x>
-     <y>156</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>348</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ri_ouverture</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_49</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>303</x>
-     <y>187</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>351</x>
-     <y>184</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ri_tours</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_50</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>272</x>
-     <y>211</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>359</x>
-     <y>211</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ri_decalageX</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_51</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>296</x>
-     <y>243</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>346</x>
-     <y>244</y>
+     <x>476</x>
+     <y>280</y>
     </hint>
    </hints>
   </connection>
@@ -1966,6 +1925,86 @@
    </hints>
   </connection>
   <connection>
+   <sender>ri_rayon</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_48</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>156</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>348</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ground_hauteur</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_59</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>247</x>
+     <y>92</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>338</x>
+     <y>95</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ville_rotationY</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_74</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>223</x>
+     <y>166</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>362</x>
+     <y>160</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bp_nombre</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_63</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>244</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>100</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bp_ecart_h</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_76</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>241</x>
+     <y>252</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>re_hauteur</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_53</receiver>
@@ -1982,6 +2021,22 @@
    </hints>
   </connection>
   <connection>
+   <sender>ri_ouverture</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_49</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>303</x>
+     <y>187</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>re_resolution</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_54</receiver>
@@ -1994,6 +2049,22 @@
     <hint type="destinationlabel">
      <x>335</x>
      <y>126</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ri_tours</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>label_50</receiver>
+   <slot>setNum(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>272</x>
+     <y>211</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>359</x>
+     <y>211</y>
     </hint>
    </hints>
   </connection>
@@ -2030,50 +2101,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>re_decalageX</sender>
+   <sender>bp_rotation</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>label_57</receiver>
+   <receiver>label_65</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>247</x>
-     <y>215</y>
+     <x>292</x>
+     <y>192</y>
     </hint>
     <hint type="destinationlabel">
-     <x>239</x>
-     <y>241</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>re_decalageZ</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_58</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>384</x>
-     <y>212</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>402</x>
-     <y>250</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ground_hauteur</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_59</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>247</x>
-     <y>92</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>338</x>
-     <y>95</y>
+     <x>353</x>
+     <y>200</y>
     </hint>
    </hints>
   </connection>
@@ -2094,38 +2133,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>ground_rayon</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_61</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>257</x>
-     <y>151</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>331</x>
-     <y>155</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bp_nombre</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_63</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>244</x>
-     <y>94</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>349</x>
-     <y>100</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>bp_hauteur</sender>
    <signal>valueChanged(int)</signal>
    <receiver>label_64</receiver>
@@ -2142,130 +2149,82 @@
    </hints>
   </connection>
   <connection>
-   <sender>bp_rotation</sender>
+   <sender>ri_decalageX</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>label_65</receiver>
+   <receiver>label_51</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>292</x>
-     <y>192</y>
+     <x>296</x>
+     <y>243</y>
     </hint>
     <hint type="destinationlabel">
-     <x>353</x>
-     <y>200</y>
+     <x>346</x>
+     <y>244</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>maison_scale</sender>
+   <sender>re_decalageX</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>label_66</receiver>
+   <receiver>label_57</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>282</x>
-     <y>90</y>
+     <x>247</x>
+     <y>215</y>
     </hint>
     <hint type="destinationlabel">
-     <x>341</x>
-     <y>90</y>
+     <x>239</x>
+     <y>241</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>ville_hauteur</sender>
+   <sender>ground_rayon</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>label_67</receiver>
+   <receiver>label_61</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>274</x>
-     <y>96</y>
+     <x>257</x>
+     <y>151</y>
     </hint>
     <hint type="destinationlabel">
-     <x>334</x>
-     <y>94</y>
+     <x>331</x>
+     <y>155</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>ville_repartition_random</sender>
+   <sender>ri_resolution</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>label_68</receiver>
+   <receiver>label_47</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>236</x>
-     <y>127</y>
+     <x>280</x>
+     <y>125</y>
     </hint>
     <hint type="destinationlabel">
-     <x>343</x>
-     <y>127</y>
+     <x>348</x>
+     <y>124</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>ville_rotationY</sender>
+   <sender>re_decalageZ</sender>
    <signal>valueChanged(int)</signal>
-   <receiver>label_74</receiver>
+   <receiver>label_58</receiver>
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>223</x>
-     <y>166</y>
+     <x>384</x>
+     <y>212</y>
     </hint>
     <hint type="destinationlabel">
-     <x>362</x>
-     <y>160</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>ville_diametre</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_75</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>219</x>
-     <y>196</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>375</x>
-     <y>190</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bp_ecart_h</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_76</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>241</x>
-     <y>252</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>250</x>
-     <y>268</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>bp_ecart_v</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>label_77</receiver>
-   <slot>setNum(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>479</x>
-     <y>261</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>476</x>
-     <y>280</y>
+     <x>402</x>
+     <y>250</y>
     </hint>
    </hints>
   </connection>
