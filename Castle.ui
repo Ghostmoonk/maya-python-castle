@@ -43,7 +43,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="shapes_rampart_int_tab">
        <attribute name="title">
@@ -1571,7 +1571,7 @@
          <string>Courbe</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_7">
+       <widget class="QPushButton" name="courbe_base">
         <property name="geometry">
          <rect>
           <x>160</x>
@@ -1590,7 +1590,7 @@
          </size>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_8">
+       <widget class="QPushButton" name="courbe_bombee">
         <property name="geometry">
          <rect>
           <x>260</x>
@@ -1609,7 +1609,7 @@
          </size>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_9">
+       <widget class="QPushButton" name="courbe_droite">
         <property name="geometry">
          <rect>
           <x>360</x>
