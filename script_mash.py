@@ -28,7 +28,42 @@ cmds.setAttr("MASH3_Distribute.gridAmplitudeZ", diametre)
 cmds.setAttr("ramp4.colorEntryList[1].position", 0.16)
 
 
-# distirbute plusieurs maisons
+#plusieurs courbes ville:
+#de base
+cmds.setAttr("ramp4.colorEntryList[1].position", 0.132)
+cmds.setAttr("ramp4.colorEntryList[2].position", 0.352)
+cmds.setAttr("ramp4.colorEntryList[6].position", 0.431)
+cmds.setAttr("ramp4.colorEntryList[4].position", 0.587)
+cmds.setAttr("ramp4.colorEntryList[3].position", 0.697)
+
+#Ecourbe bombée
+cmds.setAttr("ramp4.colorEntryList[1].position", 0.134731)
+cmds.setAttr("ramp4.colorEntryList[2].position", 0.374251)
+cmds.setAttr("ramp4.colorEntryList[6].position", 0.52994)
+cmds.setAttr("ramp4.colorEntryList[4].position", 0.613772)
+cmds.setAttr("ramp4.colorEntryList[3].position", 1)
+#droite
+cmds.setAttr("ramp4.colorEntryList[1].position", 0.230539)
+cmds.setAttr("ramp4.colorEntryList[1].position", 0.230539)
+cmds.setAttr("ramp4.colorEntryList[6].position", 0.550898)
+cmds.setAttr("ramp4.colorEntryList[4].position", 0.664671)
+cmds.setAttr("ramp4.colorEntryList[3].position", 0.832335)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
