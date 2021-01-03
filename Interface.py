@@ -51,9 +51,11 @@ def changerSliderRayonSlum():
 
 def changerSliderRayonInt():
     maximum=cmds.intSlider('ground_rayon', q=True, v=True)
+    minimum = cmds.intSlider('ville_diametre',q=True,v=True)/2 + 20
     if(cmds.intSlider('ri_rayon', q=True, v=True)>maximum):
         cmds.intSlider('ri_rayon', e=True, value=maximum)
     cmds.intSlider('ri_rayon', e=True, max=maximum)
+    cmds.intSlider('ri_rayon', e=True, min=minimum)
 
 def changerSliderRayonGround():
     maximum=cmds.intSlider('re_rayon', q=True, v=True) - Doors.InnerDoor.doorSize.z /2 - Walls.GroundWall.wallSize.z
