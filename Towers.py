@@ -7,6 +7,7 @@ class Tower:
     index = 0
     radius = 2
     height = 20
+    towerTopOffset = 2
     usingAsset = False
     trunkTower = ''
     if cmds.objExists("ASSET_Muraille_int_tour:Muraille_int_tour"):
@@ -15,6 +16,7 @@ class Tower:
     if(not cmds.objExists("tower_template")):
         if cmds.objExists("ASSET_Muraille_int_tour:Muraille_int_tour"):
             template = cmds.duplicate("ASSET_Muraille_int_tour:Muraille_int_tour",n="tower_template")
+            trunkTower = cmds.ls("tower_template|haut")[0]
 
         else:
             template = cmds.polyCylinder(r=radius, h=height, n="tower_template")
@@ -35,12 +37,15 @@ class Tower:
     
     @classmethod
     def setTemplateDimensions(cls, height, radius):
+        print(cls.trunkTower)
         if not cls.usingAsset:
             cmds.polyCylinder(cls.template, e=True, h=height, r= radius)
         else:
-            cmds.setAttr("tower_template.scalerX",radius)
-            cmds.setAttr("tower_template.scalerZ",radius)
-            cmds.setAttr("tower_template.scalerY",height)
+            cmds.showHidden("tower_template")
+            cmds.setAttr("tower_template.scaleX",radius)
+            cmds.setAttr("tower_template.scaleZ",radius)
+            cmds.setAttr(str(cls.trunkTower) + ".translateY",height)
+            cmds.hide("tower_template")
 
     @classmethod
     def IncrementTowerIndex(cls):

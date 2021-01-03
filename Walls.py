@@ -66,7 +66,7 @@ class GroundWall(Wall):
         return
 
 class OuterWall(Wall):
-    wallSize = Vector3(30, 15, 2)
+    wallSize = Vector3(24, 15, 2)
     if(not cmds.objExists("outer_wall_template")):
         if(cmds.objExists("ASSET_Muraille_ext_mur:Muraille_ext")):
             template = cmds.duplicate("ASSET_Muraille_ext_mur:Muraille_ext", n="outer_wall_template")

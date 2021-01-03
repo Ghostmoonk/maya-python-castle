@@ -11,7 +11,7 @@ class Door(object):
 
 class InnerDoor(Door):
     #Valeur indicative à modifier en fonction des assets
-    doorSize = Vector3(35.0, 20.0, 10.0)
+    doorSize = Vector3(43.0, 28.0, 92.0)
     def __init__(self, position, rotation):
         super(InnerDoor,self).__init__('inner_door')
         if(cmds.objExists("ASSET_Porte:PORTE")):
@@ -36,8 +36,8 @@ class OuterDoor(Door):
     doorSize = Vector3(80.0, 20.0, 30.0)
     def __init__(self, position, rotation):
         super(OuterDoor,self).__init__('outer_door')
-        if(cmds.objExists("ASSET_Porte_ext:porte_exter")):
-            self.door = cmds.duplicate("ASSET_Porte_ext:porte_exter",n='outer_door')
+        if(cmds.objExists("ASSET_Porte_ext:Porte_Extr")):
+            self.door = cmds.duplicate("ASSET_Porte_ext:Porte_Extr",n='outer_door')
         else:
             self.door = cmds.polyCube(w=self.doorSize.x, h=self.doorSize.y, d=self.doorSize.z, n="outer_door")
             cmds.xform('outer_door',piv=(0,-self.doorSize.y/2,0))
