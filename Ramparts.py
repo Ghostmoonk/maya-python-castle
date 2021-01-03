@@ -281,15 +281,18 @@ class ExteriorRampart(Rampart):
         return
 
     def refresh(self, newResolution, newRadius, newAperture, newDoorOffset, heightOffset):
-        super(ExteriorRampart,self).refresh(newResolution, newRadius,newAperture)
         self.center = Vector3(self.center.x,heightOffset - Doors.InnerDoor.doorSize.y,self.center.z)
+        cmds.setAttr(self.curveName+".translateY",self.center.y)
+        super(ExteriorRampart,self).refresh(newResolution, newRadius,newAperture)
+        print(newDoorOffset)
         self.doorOffset = newDoorOffset
         self.replaceDoors()
         self.createSideDoorWalls()
+        
 
     def replaceDoors(self):
         doorPosition = Vector3(self.center.x,self.center.y,self.radius) + self.doorOffset
-        cmds.move(self.center.x,self.center.y,self.radius,self.door.groupName,a=True)
+        cmds.move(self.center.x + self.doorOffset.x,self.center.y + self.doorOffset.y,self.radius + self.doorOffset.z,self.door.groupName,a=True)
         print("move group")
         print(self.doorOffset)
     
@@ -313,6 +316,7 @@ class ExteriorRampart(Rampart):
 
     def createSegmentsWalls(self):
         super(ExteriorRampart,self).createSegmentsWalls(self.wallsGroupName)
+        self.createIntersectionsItems("intersection_walls")
 
     def instantiateRampartCurveBased(self):
         super(ExteriorRampart,self).instantiateRampartCurveBased('ExteriorRampart_curve')
@@ -325,10 +329,21 @@ class ExteriorRampart(Rampart):
         self.groupRampart([self.curveName,self.wallsGroupName,self.door.groupName,"left_out_side_door_walls","right_out_side_door_walls"], self.groupName)    
         cmds.xform(self.groupName, piv=(self.center.x,self.center.y,self.center.z))
 
-    def createIntersectionsItems(self):
-        for i in range (0,self.resolution):
+    def createIntersectionsItems(self, groupName):
+
+        intersectWallstNames = []
+        cmds.group(em=True, n=groupName)
+        print(self.resolution)
+        for i in range (0,self.resolution+1):
             intersectionPosition = Vector3(cmds.pointPosition(self.curveName + '.cv['+str(i)+']')[0],cmds.pointPosition(self.curveName + '.cv['+str(i)+']')[1],cmds.pointPosition(self.curveName + '.cv['+str(i)+']')[2])
-            print(intersectionPosition)
+            angleWithCenter = Vector3.getAngleBetweenVector(Vector3(0,0,1),self.center - intersectionPosition)
+            if((self.center - intersectionPosition).x < 0):
+                angleWithCenter = - angleWithCenter
+            intersectionWall = Walls.IntersectionOuterWall(intersectionPosition,Vector3(0, 180.0 + angleWithCenter, 0))
+            intersectWallstNames.append(intersectionWall.name)
+
+        cmds.parent(intersectWallstNames,groupName)
+        cmds.parent(groupName,self.wallsGroupName)
 
 class GroundRampart(Rampart):
 

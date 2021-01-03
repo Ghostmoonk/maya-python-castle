@@ -17,6 +17,10 @@ class Vector3:
     def getDotProduct(cls, vecA, vecB):
         return vecA.x * vecB.x + vecA.y * vecB.y + vecA.z * vecB.z
 
+    # @classmethod
+    # def getCrossProduct(cls, vecA, vecB, angle):
+    #     return vecA.magnitude * vecB.magnitude * math.sin(angle) * Vector3.getDotProduct(vecA,vecB)
+
     def __str__(self):
         return "("+str(self.x)+","+str(self.y)+","+str(self.z)+")"
 
