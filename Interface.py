@@ -6,12 +6,15 @@ import maya_python_castle.Walls as Walls
 import maya_python_castle.Ramparts as Ramparts
 import maya_python_castle.Castle as Castle
 import maya_python_castle.Towers as Towers
+import maya_python_castle.Doors as Doors
 #cmds.file(f=True, new=True)
 
 reload(Utils.Utils)
 reload(Walls)
 reload(Ramparts)
 reload(Castle)
+reload(Doors)
+
 def close_callback(window, *args):
   print "Close!", window
   cmds.deleteUI(window, window=True)
@@ -75,13 +78,13 @@ def changerResolutionSol():
 #print(path.replace("\\","/))
 class Scene:
     def __init__(self):
-        self.interface = cmds.loadUI(f=cmds.internalVar(usd=True) + 'maya_python_castle/Castle.ui')
+        self.interface = cmds.loadUI(f=cmds.internalVar(usd=True) + 'maya_python_castle/Castle_form.ui')
         self.windows = cmds.showWindow(self.interface)
         #↓cmds.button('buttonClose', edit=True, command=functools.partial(close_callback, self.interface))
         self.slum= Slum()
         self.tours=Tours()
         self.castle = ''
-        print(cmds.button('generate_slum_button', query=True, exists=True))
+        cmds.button('generate_slum_button', query=True, exists=True)
         cmds.button('generate_slum_button',edit=True, c='scene.generateSlum()')
         cmds.button('generate_bp_button',edit=True, c='scene.generateTours()')
         #cmds.button('generate_castle_button',edit=True, c='scene.generateCastle()')
@@ -96,7 +99,7 @@ class Scene:
             'ri_tours',e=True,dc="scene.castle.interiorRampart.createTowers(cmds.intSlider(scene.towerAmountSlider,q=True,v=True))")
         
         cmds.button('generate_ri_button', e=True, c="scene.castle.interiorRampart.refresh(cmds.intSlider('ri_resolution',q=True,v=True),cmds.intSlider('ri_rayon',q=True,v=True), cmds.intSlider('ri_ouverture',q=True,v=True),Vector3(cmds.intSlider('ri_decalageX', q=True,v=True),0,cmds.intSlider('ri_decalageZ', q=True,v=True)))")
-        cmds.button('generate_re_button', e=True, c="scene.castle.exteriorRampart.refresh(cmds.intSlider('re_resolution',q=True,v=True),cmds.intSlider('re_rayon',q=True,v=True),cmds.intSlider('re_ouverture',q=True,v=True),Vector3(cmds.intSlider('re_decalageX', q=True,v=True),0,cmds.intSlider('re_decalageZ', q=True,v=True)))")
+        cmds.button('generate_re_button', e=True, c="scene.castle.exteriorRampart.refresh(cmds.intSlider('re_resolution',q=True,v=True),cmds.intSlider('re_rayon',q=True,v=True),cmds.intSlider('re_ouverture',q=True,v=True),Vector3(cmds.intSlider('re_decalageX', q=True,v=True),0,cmds.intSlider('re_decalageZ', q=True,v=True)),cmds.intSlider('re_decalageHauteur', q=True,v=True))")
         cmds.button('generate_ground_button', e=True, c="scene.castle.groundRampart.refresh(cmds.intSlider('ground_resolution',q=True,v=True),cmds.intSlider('ground_rayon',q=True,v=True),cmds.intSlider('ground_hauteur',q=True,v=True))")
         cmds.button('generate_tour_button',e=True,c="Towers.Tower.setTemplateDimensions(cmds.intSlider('tour_hauteur',q=True,v=True),cmds.intSlider('tour_rayon',q=True,v=True))")
 
@@ -106,8 +109,6 @@ class Scene:
         scene.slum.height()
         scene.slum.randomRotation()
         scene.slum.diametre()
-        
-
 
     def generateTours(self):
         scene.tours.hauteur()
@@ -116,9 +117,6 @@ class Scene:
         scene.tours.ecartH()
         scene.tours.ecartV()
         scene.tours.placement()
-
-
-
     
     def generateCastle(self):
         #scene.generateSlum()
@@ -131,24 +129,20 @@ class Scene:
         interiorRampart = Ramparts.InteriorRampart(
             cmds.intSlider('ri_resolution', q=True, v=True),
             cmds.intSlider('ri_ouverture', q=True, v=True),
-            0.5, 
-            0.5,
             cmds.intSlider('ri_rayon', q=True, v=True),
-            Vector3(0,10,0),
+            Vector3(0,0,0),
             cmds.intSlider('ri_tours', q=True, v=True),
             Vector3(float(cmds.intSlider("ri_decalageX", q=True,v=True)),0,float(cmds.intSlider("ri_decalageZ", q=True,v=True))))
         
         cmds.intSlider("ville_diametre", e=True, dc="changerSliderRayonSlum()")
 
         cmds.intSlider("ri_rayon", e=True, dc="changerSliderRayonInt()")
-
+    
         exteriorRampart = Ramparts.ExteriorRampart(
-            cmds.intSlider('re_hauteur', q=True, v=True),
+            cmds.intSlider('re_resolution', q=True, v=True),
             cmds.intSlider('re_ouverture', q=True, v=True),
-            0.5,
-            0.5,
             cmds.intSlider('re_rayon', q=True, v=True),
-            Vector3(0,0,0),
+            Vector3(0,-Doors.InnerDoor.doorSize.y,0),
             Vector3(float(cmds.intSlider("re_decalageX", q=True,v=True)),0,float(cmds.intSlider("re_decalageZ", q=True,v=True))))
         
         cmds.intSlider("ground_rayon", e=True, dc="changerSliderRayonGround()")
@@ -157,10 +151,8 @@ class Scene:
         groundRampart = Ramparts.GroundRampart(
             cmds.intSlider('ground_resolution', q=True, v=True),
             0.0,
-            0.5,
-            0.5,
             cmds.intSlider('ground_rayon', q=True, v=True),
-            Vector3(0,10,0),
+            Vector3(0,0,0),
             cmds.intSlider('ground_hauteur', q=True, v=True))
 
         cmds.intSlider("re_rayon", e=True, dc="changerSliderRayonExt()")

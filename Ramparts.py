@@ -25,10 +25,8 @@ import maya_python_castle.Walls as Walls
 
 class Rampart(object):
 
-    def __init__(self, resolution, apertureAngle, wallHeight, wallDepth, radius, center):
+    def __init__(self, resolution, apertureAngle, radius, center):
         self.resolution = resolution
-        self.wallHeight = wallHeight
-        self.wallDepth = wallDepth
         self.center = center
         self.radius = radius
         self.apertureAngle = apertureAngle
@@ -133,7 +131,6 @@ class Rampart(object):
         if(cmds.objExists(wallGroupName)):
             #Clear the group
             old_group = cmds.listRelatives(wallGroupName,c=True)
-            print(old_group)
             cmds.delete(old_group)
         else:
             cmds.group(n=wallGroupName,em=True)
@@ -174,9 +171,9 @@ class Rampart(object):
 
 class InteriorRampart(Rampart):
 
-    def __init__(self, resolution, apertureAngle, wallHeight, wallDepth, radius, center,towerAmount, doorOffset):
+    def __init__(self, resolution, apertureAngle,radius, center,towerAmount, doorOffset):
         super(InteriorRampart, self).__init__(resolution, apertureAngle,
-                                              wallHeight, wallDepth, radius, center)
+                                              radius, center)
         self.towerAmount = towerAmount
         self.towers = []
         self.wallsPerSegment = int(
@@ -253,7 +250,6 @@ class InteriorRampart(Rampart):
 
     def alignTowers(self):
         cmds.ls(cmds.listRelatives(self.towersGroupName, c=True))
-        print("LES TOURS SONT")
         cmds.select(cmds.ls(cmds.listRelatives(self.towersGroupName, c=True)))
         cmds.select(self.curveName,add=True)
         mayaGeneral.positionAlongCurve()
@@ -264,6 +260,7 @@ class InteriorRampart(Rampart):
         self.replaceDoors()
         self.createSideDoorWalls()
         self.alignTowers()
+        cmds.select(cl=True)
 
     def replaceDoors(self):
         doorPosition = Vector3(self.center.x,self.center.y,self.radius) + self.doorOffset
@@ -272,18 +269,20 @@ class InteriorRampart(Rampart):
 
 class ExteriorRampart(Rampart):
 
-    def __init__(self, resolution, apertureAngle, wallHeight, wallDepth, radius, center, doorOffset):
-        super(ExteriorRampart, self).__init__(resolution, apertureAngle, wallHeight, wallDepth, radius, center)
+    def __init__(self, resolution, apertureAngle, radius, center, doorOffset):
+        super(ExteriorRampart, self).__init__(resolution, apertureAngle, radius, center)
         self.intersectionPoints = []
         self.wallsPerSegment = int(math.ceil(self.getTrigoSegmentLength() / Walls.OuterWall.wallSize.x))
         self.door = ''
         self.doorOffset = doorOffset
         self.wallsGroupName = "outer_walls"
         self.groupName = "exterior_rampart"
+        self.intersectionWallsGroupName = "intersections_walls"
         return
 
-    def refresh(self, newResolution, newRadius, newAperture, newDoorOffset):
+    def refresh(self, newResolution, newRadius, newAperture, newDoorOffset, heightOffset):
         super(ExteriorRampart,self).refresh(newResolution, newRadius,newAperture)
+        self.center = Vector3(self.center.x,heightOffset - Doors.InnerDoor.doorSize.y,self.center.z)
         self.doorOffset = newDoorOffset
         self.replaceDoors()
         self.createSideDoorWalls()
@@ -291,6 +290,8 @@ class ExteriorRampart(Rampart):
     def replaceDoors(self):
         doorPosition = Vector3(self.center.x,self.center.y,self.radius) + self.doorOffset
         cmds.move(self.center.x,self.center.y,self.radius,self.door.groupName,a=True)
+        print("move group")
+        print(self.doorOffset)
     
     def getWallSize(self):
         return Walls.OuterWall.wallSize
@@ -324,10 +325,15 @@ class ExteriorRampart(Rampart):
         self.groupRampart([self.curveName,self.wallsGroupName,self.door.groupName,"left_out_side_door_walls","right_out_side_door_walls"], self.groupName)    
         cmds.xform(self.groupName, piv=(self.center.x,self.center.y,self.center.z))
 
+    def createIntersectionsItems(self):
+        for i in range (0,self.resolution):
+            intersectionPosition = Vector3(cmds.pointPosition(self.curveName + '.cv['+str(i)+']')[0],cmds.pointPosition(self.curveName + '.cv['+str(i)+']')[1],cmds.pointPosition(self.curveName + '.cv['+str(i)+']')[2])
+            print(intersectionPosition)
+
 class GroundRampart(Rampart):
 
-    def __init__(self, resolution, apertureAngle, wallHeight, wallDepth, radius, center, groundHeight):
-        super(GroundRampart, self).__init__(resolution, apertureAngle, wallHeight, wallDepth, radius, center)
+    def __init__(self, resolution, apertureAngle, radius, center, groundHeight):
+        super(GroundRampart, self).__init__(resolution, apertureAngle, radius, center)
         self.groundHeight = groundHeight
         self.wallsGroupName = "inner_ground_wall"
         self.groupName = "ground_rampart"
@@ -356,7 +362,6 @@ class GroundRampart(Rampart):
     def refresh(self, newResolution, newRadius, newGroundHeight):
         self.resolution = newResolution
         self.radius = newRadius
-        print(newResolution)
         self.groundHeight = newGroundHeight
         cmds.circle(self.curve, e=True, s=newResolution,r=newRadius)
         self.createSegmentsWalls()
