@@ -24,7 +24,8 @@ class Tower:
         cmds.hide("tower_template")
     else:
         template = cmds.ls("tower_template")
-        trunkTower = cmds.ls("tower_template|haut")[0]
+        if usingAsset:
+            trunkTower = cmds.ls("tower_template|haut")[0]
 
     # When a tower object is created, instanciate a model of it
     def __init__(self, position):
