@@ -16,6 +16,11 @@
   <property name="windowTitle">
    <string>Generateur de Chateau</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{	
+background-image: url('D:/Users/Justine/coursDigi/Dessin/paysage.jpg');
+}</string>
+  </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
@@ -28,8 +33,13 @@
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true">QTabWidget{
+	background-image: url('D:/Users/Justine/coursDigi/Dessin/paysage1.jpg');
+}</string>
+      </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
@@ -713,6 +723,11 @@
           <height>61</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-image: url('D:/Users/Justine/coursDigi/Dessin/paysage1.jpg');
+}</string>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -726,8 +741,13 @@
           <height>61</height>
          </rect>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+	background-color:red;
+}</string>
+        </property>
         <property name="text">
-         <string/>
+         <string>test</string>
         </property>
        </widget>
       </widget>

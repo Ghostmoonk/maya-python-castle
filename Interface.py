@@ -27,7 +27,23 @@ def changerSliderDensite():
 
 def changerSliderHauteur():
     maximum=cmds.intSlider('bp_hauteur', q=True, v=True)
+    dif=maximum/2
+    
+    if(cmds.intSlider('ville_hauteur', q=True, v=True)>maximum):
+        cmds.intSlider('ville_hauteur', e=True, value=maximum)
+    if(maximum<50):
+        maximum=maximum+(dif*maximum/100)
+    if(maximum>50):
+        maximum=maximum-(dif*maximum/100)
+    if(maximum<35):
+        maximum=35
     cmds.intSlider("ville_hauteur", e=True, max=maximum)
+
+def changerSliderRayonSlum():
+    maximum=cmds.intSlider('ri_rayon', q=True, v=True)*2-20
+    if(cmds.intSlider('ville_diametre', q=True, v=True)>maximum):
+        cmds.intSlider('ville_diametre', e=True, value=maximum)
+    cmds.intSlider('ville_diametre', e=True, max=maximum)
 
 def changerSliderRayonInt():
     maximum=cmds.intSlider('ground_rayon', q=True, v=True)
@@ -121,6 +137,8 @@ class Scene:
             Vector3(0,10,0),
             cmds.intSlider('ri_tours', q=True, v=True),
             Vector3(float(cmds.intSlider("ri_decalageX", q=True,v=True)),0,float(cmds.intSlider("ri_decalageZ", q=True,v=True))))
+        
+        cmds.intSlider("ville_diametre", e=True, dc="changerSliderRayonSlum()")
 
         cmds.intSlider("ri_rayon", e=True, dc="changerSliderRayonInt()")
 
@@ -158,11 +176,13 @@ class Slum:
     def height(self):
         print cmds.intSlider('ville_hauteur', q=True, v=True)
         cmds.setAttr("MASH3_Offset.Envelope", cmds.intSlider('ville_hauteur', q=True, v=True)/100.)
-        cmds.intSlider("ville_hauteur", e=True, dc="changerSliderDensite()")
+        #cmds.intSlider("ville_hauteur", e=True, dc="changerSliderDensite()")
 
     def density(self):
         #a regeler en fonction de la hauteur 
-        cmds.setAttr("MASH3_Visibility.randEnvelope", cmds.intSlider('ville_repartition_random', q=True, v=True)/100.)
+        densite = cmds.intSlider('ville_repartition_random', q=True, v=True)
+        cmds.setAttr("MASH3_Distribute.gridx", densite)
+        cmds.setAttr("MASH3_Distribute.gridz", densite)
     
     def randomRotation(self):
         cmds.setAttr("MASH3_Random.rotationY", cmds.intSlider('ville_rotationY', q=True, v=True)/100.)
