@@ -15,7 +15,7 @@ class Wall(object):
         cls.index += 1
 
 class InnerWall(Wall):
-    wallSize = Vector3(15, 12, 3)
+    wallSize = Vector3(15.0, 12.0, 3.0)
     templateName = "inner_wall_template"
 
     if(not cmds.objExists(templateName)):
@@ -42,7 +42,7 @@ class InnerWall(Wall):
         return
 
 class GroundWall(Wall):
-    wallSize = Vector3(34,20,10)
+    wallSize = Vector3(34.4,27.0,16.0)
     templateName = "ground_wall_template"
 
     if(not cmds.objExists(templateName)):
@@ -97,7 +97,7 @@ class OuterWall(Wall):
         return
 
 class IntersectionOuterWall(Wall):
-    wallSize = Vector3(2, 15, 2)
+    wallSize = Vector3(2.0, 15.0, 2.0)
     templateName = "intersection_outer_wall_template"
 
     if(not cmds.objExists(templateName)):

@@ -43,7 +43,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="shapes_rampart_int_tab">
        <attribute name="title">
@@ -737,10 +737,10 @@
                 <number>10</number>
                </property>
                <property name="maximum">
-                <number>200</number>
+                <number>240</number>
                </property>
                <property name="value">
-                <number>160</number>
+                <number>180</number>
                </property>
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
@@ -750,7 +750,7 @@
              <item>
               <widget class="QLabel" name="re_rayonText">
                <property name="text">
-                <string>135</string>
+                <string>180</string>
                </property>
               </widget>
              </item>

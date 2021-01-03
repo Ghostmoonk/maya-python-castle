@@ -1,3 +1,4 @@
+# coding=utf-8
 import maya.cmds as cmds
 import functools
 from maya_python_castle.Utils.Utils import Vector3
@@ -55,7 +56,7 @@ def changerSliderRayonInt():
     cmds.intSlider('ri_rayon', e=True, max=maximum)
 
 def changerSliderRayonGround():
-    maximum=cmds.intSlider('re_rayon', q=True, v=True)
+    maximum=cmds.intSlider('re_rayon', q=True, v=True) - Doors.InnerDoor.doorSize.z /2 - Walls.GroundWall.wallSize.z
     min=cmds.intSlider('ri_rayon', q=True, v=True)
     if(cmds.intSlider('ground_rayon', q=True, v=True)>maximum):
         cmds.intSlider('ground_rayon', e=True, value=maximum-1)
@@ -64,7 +65,7 @@ def changerSliderRayonGround():
     cmds.intSlider('ground_rayon', e=True,min=min, max=maximum)
 
 def changerSliderRayonExt():
-    min=cmds.intSlider('ground_rayon', q=True, v=True)+1
+    min=cmds.intSlider('ground_rayon', q=True, v=True) + Doors.InnerDoor.doorSize.z /2 + Walls.GroundWall.wallSize.z
     if(cmds.intSlider('re_rayon', q=True, v=True)<min):
         cmds.intSlider('re_rayon', e=True, value=min)
     cmds.intSlider('re_rayon', e=True, min=min)
@@ -99,7 +100,8 @@ class Scene:
             'ri_tours',e=True,dc="scene.castle.interiorRampart.createTowers(cmds.intSlider(scene.towerAmountSlider,q=True,v=True))")
         
         cmds.button('generate_ri_button', e=True, c="scene.castle.interiorRampart.refresh(cmds.intSlider('ri_resolution',q=True,v=True),cmds.intSlider('ri_rayon',q=True,v=True), cmds.intSlider('ri_ouverture',q=True,v=True),Vector3(cmds.intSlider('ri_decalageX', q=True,v=True),0,cmds.intSlider('ri_decalageZ', q=True,v=True)))")
-        cmds.button('generate_re_button', e=True, c="scene.castle.exteriorRampart.refresh(cmds.intSlider('re_resolution',q=True,v=True),cmds.intSlider('re_rayon',q=True,v=True),cmds.intSlider('re_ouverture',q=True,v=True),Vector3(cmds.intSlider('re_decalageX', q=True,v=True),0,cmds.intSlider('re_decalageZ', q=True,v=True)),cmds.intSlider('re_decalageHauteur', q=True,v=True))")
+        cmds.button('generate_re_button', e=True, c=
+        "scene.castle.exteriorRampart.refresh(cmds.intSlider('re_resolution',q=True,v=True),cmds.intSlider('re_rayon',q=True,v=True),cmds.intSlider('re_ouverture',q=True,v=True),Vector3(cmds.intSlider('re_decalageX', q=True,v=True),0,cmds.intSlider('re_decalageZ', q=True,v=True)),cmds.intSlider('re_decalageHauteur', q=True,v=True))")
         cmds.button('generate_ground_button', e=True, c="scene.castle.groundRampart.refresh(cmds.intSlider('ground_resolution',q=True,v=True),cmds.intSlider('ground_rayon',q=True,v=True),cmds.intSlider('ground_hauteur',q=True,v=True))")
         cmds.button('generate_tour_button',e=True,c="Towers.Tower.setTemplateDimensions(cmds.intSlider('tour_hauteur',q=True,v=True),cmds.intSlider('tour_rayon',q=True,v=True))")
 
@@ -230,8 +232,13 @@ class Tours:#batiment principal
         cmds.setAttr("MASH4_Random.randomSeed", cmds.intSlider('bp_placement', q=True, v=True))
 
 
-
-
-
-
 scene=Scene()
+
+#Un p'tit sol pour Julien
+groundSize = cmds.intSlider('re_rayon',q=True,max=True)*2
+if(cmds.objExists("ground")):
+    cmds.delete("ground")
+
+ground = cmds.polyPlane(w=groundSize,h=groundSize,sx=0,sy=0, n ="ground")
+cmds.move( 0,scene.castle.exteriorRampart.center.y,0,ground)
+cmds.parent(ground,"Castle")
