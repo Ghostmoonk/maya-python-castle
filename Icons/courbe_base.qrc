@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="courbeB">
+    <file>courbe_base.png</file>
+  </qresource>
+  <qresource prefix="courbeBo">
+    <file>courbe_bombee.png</file>
+  </qresource>
+  <qresource prefix="courbeD">
+    <file>courbe_droite.png</file>
+  </qresource>
+</RCC>
