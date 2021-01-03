@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1207</width>
-    <height>866</height>
+    <width>637</width>
+    <height>573</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>611</width>
-      <height>671</height>
+      <width>621</width>
+      <height>531</height>
      </rect>
     </property>
     <property name="tabPosition">
@@ -43,7 +43,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="shapes_rampart_int_tab">
        <attribute name="title">
@@ -431,8 +431,6 @@
          </item>
         </layout>
        </widget>
-       <zorder>verticalLayoutWidget</zorder>
-       <zorder>generate_ri_button</zorder>
       </widget>
       <widget class="QWidget" name="shapes_rampart_ext_tab">
        <attribute name="title">
@@ -1429,8 +1427,11 @@
                </item>
                <item>
                 <widget class="QSlider" name="bp_ecart_h">
+                 <property name="minimum">
+                  <number>5</number>
+                 </property>
                  <property name="maximum">
-                  <number>100</number>
+                  <number>25</number>
                  </property>
                  <property name="value">
                   <number>15</number>
@@ -1649,10 +1650,10 @@
          </rect>
         </property>
         <property name="maximum">
-         <number>100</number>
+         <number>40</number>
         </property>
         <property name="value">
-         <number>100</number>
+         <number>20</number>
         </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -1800,8 +1801,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="Icons/courbe_base.qrc">
-          <normaloff>:/courbeB/courbe_base.png</normaloff>:/courbeB/courbe_base.png</iconset>
+         <iconset>
+          <normaloff>courbe_base.png</normaloff>courbe_base.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1823,8 +1824,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="Icons/courbe_base.qrc">
-          <normaloff>:/courbeD/courbe_droite.png</normaloff>:/courbeD/courbe_droite.png</iconset>
+         <iconset>
+          <normaloff>courbe_droite.png</normaloff>courbe_droite.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1846,8 +1847,8 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="Icons/courbe_base.qrc">
-          <normaloff>:/courbeBo/courbe_bombee.png</normaloff>:/courbeBo/courbe_bombee.png</iconset>
+         <iconset>
+          <normaloff>courbe_bombee.png</normaloff>courbe_bombee.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -1899,10 +1900,6 @@
        </item>
       </layout>
      </widget>
-     <zorder>tabWidget_2</zorder>
-     <zorder>generate_ri_button</zorder>
-     <zorder>close_button</zorder>
-     <zorder>horizontalLayoutWidget</zorder>
     </widget>
     <widget class="QWidget" name="materials_tab">
      <attribute name="title">
@@ -1980,7 +1977,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1207</width>
+     <width>637</width>
      <height>21</height>
     </rect>
    </property>
