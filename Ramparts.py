@@ -260,6 +260,7 @@ class InteriorRampart(Rampart):
         self.replaceDoors()
         self.createSideDoorWalls()
         self.alignTowers()
+        cmds.select(cl=True)
 
     def replaceDoors(self):
         doorPosition = Vector3(self.center.x,self.center.y,self.radius) + self.doorOffset
@@ -276,6 +277,7 @@ class ExteriorRampart(Rampart):
         self.doorOffset = doorOffset
         self.wallsGroupName = "outer_walls"
         self.groupName = "exterior_rampart"
+        self.intersectionWallsGroupName = "intersections_walls"
         return
 
     def refresh(self, newResolution, newRadius, newAperture, newDoorOffset, heightOffset):
@@ -322,6 +324,11 @@ class ExteriorRampart(Rampart):
         #Step 6 : Group all
         self.groupRampart([self.curveName,self.wallsGroupName,self.door.groupName,"left_out_side_door_walls","right_out_side_door_walls"], self.groupName)    
         cmds.xform(self.groupName, piv=(self.center.x,self.center.y,self.center.z))
+
+    def createIntersectionsItems(self):
+        for i in range (0,self.resolution):
+            intersectionPosition = Vector3(cmds.pointPosition(self.curveName + '.cv['+str(i)+']')[0],cmds.pointPosition(self.curveName + '.cv['+str(i)+']')[1],cmds.pointPosition(self.curveName + '.cv['+str(i)+']')[2])
+            print(intersectionPosition)
 
 class GroundRampart(Rampart):
 
