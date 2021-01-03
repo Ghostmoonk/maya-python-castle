@@ -1,6 +1,6 @@
 //Maya ASCII 2020 scene
 //Name: ASSET_Porte_ext.ma
-//Last modified: Sun, Jan 03, 2021 05:22:28 PM
+//Last modified: Sun, Jan 03, 2021 06:29:57 PM
 //Codeset: 1252
 requires maya "2020";
 requires -nodeType "MASH_Visibility" "MASH" "450";
@@ -15,12 +15,12 @@ fileInfo "version" "2020";
 fileInfo "cutIdentifier" "202009141615-87c40af620";
 fileInfo "osv" "Microsoft Windows 10 Technical Preview  (Build 18363)\n";
 fileInfo "license" "student";
-fileInfo "UUID" "51BCE04A-4068-F366-0842-DF8EB819C591";
+fileInfo "UUID" "9D2C62C9-4D85-F813-6E73-90B402EB38DD";
 createNode transform -s -n "persp";
 	rename -uid "820050FA-4130-2943-DCD2-919786243AF0";
 	setAttr ".v" no;
-	setAttr ".t" -type "double3" 39.243089526542597 81.953771251139969 -0.0030234533650972395 ;
-	setAttr ".r" -type "double3" -422.13835270737712 -1696.2000000016631 -2.5444437451708134e-14 ;
+	setAttr ".t" -type "double3" -29.199082638744656 8.4857914158583299 105.0828437216677 ;
+	setAttr ".r" -type "double3" -354.93835270698338 -1821.3999999979942 2.1350456567911454e-16 ;
 createNode camera -s -n "perspShape" -p "persp";
 	rename -uid "3D0A6E42-407D-5245-BA54-FCB92538D601";
 	setAttr -k off ".v" no;
@@ -11272,19 +11272,19 @@ createNode mesh -n "Upper_lowShape" -p "Upper_low";
 	setAttr ".hfd" -type "dataPolyComponent" Index_Data Face 0 ;
 	setAttr ".ai_translator" -type "string" "polymesh";
 createNode lightLinker -s -n "lightLinker1";
-	rename -uid "81597836-4A55-EEEB-6474-2FA8F0E8B3A3";
+	rename -uid "1E909186-4DF9-7CDF-FA74-5383FD460432";
 	setAttr -s 3 ".lnk";
 	setAttr -s 3 ".slnk";
 createNode shapeEditorManager -n "shapeEditorManager";
-	rename -uid "EC1DC145-429A-2A40-10E6-C5957113909D";
+	rename -uid "89797AD7-47AD-845B-8B12-76B6DAE039F5";
 createNode poseInterpolatorManager -n "poseInterpolatorManager";
-	rename -uid "05C59F1D-418B-0527-83E2-4F95435967D4";
+	rename -uid "168F1BA9-446A-5F40-3B16-1DA967572DCA";
 createNode displayLayerManager -n "layerManager";
-	rename -uid "2D3C995D-4990-BC07-74A4-5795BBF2B027";
+	rename -uid "362A7633-4C0D-3B6E-0A92-8294627639E8";
 createNode displayLayer -n "defaultLayer";
 	rename -uid "C8E5F445-4FDD-C8AD-DB40-4B91F6A02655";
 createNode renderLayerManager -n "renderLayerManager";
-	rename -uid "84A02543-4E84-75D9-2C7F-8D8972E29633";
+	rename -uid "049DE692-470E-0FD5-7A52-79BFF96CFDF1";
 createNode renderLayer -n "defaultRenderLayer";
 	rename -uid "1634C6ED-4440-3C85-FC58-2EA5AC0B1DE7";
 	setAttr ".g" yes;
@@ -11525,6 +11525,7 @@ createNode renderLayer -n "wifgbil_defaultRenderLayer";
 createNode aiStandardSurface -n "PorteExt";
 	rename -uid "3F6515EE-47A4-B4FB-01E5-2FBE2C9F29BB";
 	setAttr ".base" 1;
+	setAttr ".base_color" -type "float3" 0.58819997 0.58819997 0.58819997 ;
 	setAttr ".specular" 0;
 createNode shadingEngine -n "aiStandardSurface1SG";
 	rename -uid "F483595F-4265-A276-3631-7B881B83BD0C";
@@ -11536,7 +11537,7 @@ createNode materialInfo -n "materialInfo1";
 createNode file -n "file6";
 	rename -uid "16A05215-420B-F397-8A16-C784E09483B8";
 	setAttr ".ail" yes;
-	setAttr ".ftn" -type "string" "E:/BureauSSD/-- PROJETS --/ProjetMaya_Castle/Mes assets/PorteMilieu/PorteMiddleLow_DefaultMaterial_Normal.png";
+	setAttr ".ftn" -type "string" "E:/BureauSSD/-- PROJETS --/ProjetMaya_Castle/ProjetFinalChateau/maya-python-castle/PROJETCHATEAU/data/Porte-Ext.png";
 	setAttr ".cs" -type "string" "Raw";
 createNode place2dTexture -n "place2dTexture10";
 	rename -uid "155B95C0-4821-0A12-927D-00A757A28221";
