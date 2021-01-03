@@ -33,7 +33,7 @@ class InnerDoor(Door):
 
 class OuterDoor(Door):
     #Valeur indicative à modifier en fonction des assets
-    doorSize = Vector3(80.0, 20.0, 30.0)
+    doorSize = Vector3(35.0, 25.0, 15.0)
     def __init__(self, position, rotation):
         super(OuterDoor,self).__init__('outer_door')
         if(cmds.objExists("ASSET_Porte_ext:Porte_Extr")):

@@ -44,6 +44,7 @@ class Castle:
             cmds.setAttr('MashCity.visibility',True)
 
         cmds.select(cl=True)
+        
     def ResetGroupLayer(self):
         cmds.editDisplayLayerMembers(rampartsLayer, 'Castle')
         
