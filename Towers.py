@@ -24,6 +24,7 @@ class Tower:
         cmds.hide("tower_template")
     else:
         template = cmds.ls("tower_template")
+        trunkTower = cmds.ls("tower_template|haut")[0]
 
     # When a tower object is created, instanciate a model of it
     def __init__(self, position):
@@ -37,13 +38,16 @@ class Tower:
     
     @classmethod
     def setTemplateDimensions(cls, height, radius):
-        print(cls.trunkTower)
+        print(cmds.listRelatives("tower_template",ad=True))
+        print(cmds.listRelatives("tower_template",ap=True))
         if not cls.usingAsset:
-            cmds.polyCylinder(cls.template, e=True, h=height, r= radius)
+            cmds.polyCylinder(cls.template, e=True, h=height, r= radius/100.0)
         else:
             cmds.showHidden("tower_template")
-            cmds.setAttr("tower_template.scaleX",radius)
-            cmds.setAttr("tower_template.scaleZ",radius)
+            cmds.setAttr("tower_template|haut.scaleX",radius/100.0)
+            cmds.setAttr("tower_template|haut.scaleZ",radius/100.0)
+            cmds.setAttr("tower_template|bas.scaleX",radius/100.0)
+            cmds.setAttr("tower_template|bas.scaleZ",radius/100.0)
             cmds.setAttr(str(cls.trunkTower) + ".translateY",height)
             cmds.hide("tower_template")
 

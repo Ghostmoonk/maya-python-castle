@@ -101,7 +101,7 @@ class Scene:
         cmds.button('generate_ri_button', e=True, c="scene.castle.interiorRampart.refresh(cmds.intSlider('ri_resolution',q=True,v=True),cmds.intSlider('ri_rayon',q=True,v=True), cmds.intSlider('ri_ouverture',q=True,v=True),Vector3(cmds.intSlider('ri_decalageX', q=True,v=True),0,cmds.intSlider('ri_decalageZ', q=True,v=True)))")
         cmds.button('generate_re_button', e=True, c="scene.castle.exteriorRampart.refresh(cmds.intSlider('re_resolution',q=True,v=True),cmds.intSlider('re_rayon',q=True,v=True),cmds.intSlider('re_ouverture',q=True,v=True),Vector3(cmds.intSlider('re_decalageX', q=True,v=True),0,cmds.intSlider('re_decalageZ', q=True,v=True)),cmds.intSlider('re_decalageHauteur', q=True,v=True))")
         cmds.button('generate_ground_button', e=True, c="scene.castle.groundRampart.refresh(cmds.intSlider('ground_resolution',q=True,v=True),cmds.intSlider('ground_rayon',q=True,v=True),cmds.intSlider('ground_hauteur',q=True,v=True))")
-        cmds.button('generate_tour_button',e=True,c="Towers.Tower.setTemplateDimensions(cmds.intSlider('tour_hauteur',q=True,v=True),cmds.intSlider('tour_rayon',q=True,v=True)/100)")
+        cmds.button('generate_tour_button',e=True,c="Towers.Tower.setTemplateDimensions(cmds.intSlider('tour_hauteur',q=True,v=True),cmds.intSlider('tour_rayon',q=True,v=True))")
 
 
     def generateSlum(self):
