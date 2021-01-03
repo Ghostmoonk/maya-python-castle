@@ -52,11 +52,11 @@
       </property>
       <property name="styleSheet">
        <string notr="true">QTabWidget{
-	background-image:url(&quot;D:/Users/Justine/coursDigi/Dessing/paysage.jpg&quot;);
+	background-image:url(&quot;C:/Users/Justine/Documents/maya/2020/scripts/maya_python_castle/pierre.jpg&quot;);
 }</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="shapes_rampart_int_tab">
        <property name="styleSheet">
@@ -439,7 +439,7 @@
       <widget class="QWidget" name="shapes_rampart_ext_tab">
        <property name="styleSheet">
         <string notr="true">QWidget{
-	background-image: url('D:/Users/Justine/coursDigi/Dessin/paysage.jpg');
+	background-image:url(&quot;C:/Users/Justine/Documents/maya/2020/scripts/maya_python_castle/pierre2.jpg&quot;);
 }</string>
        </property>
        <attribute name="title">
